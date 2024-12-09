@@ -1,6 +1,6 @@
-export default function MainComponent(props) {
+export default function MainWrapper(props) {
     return (
-        <div className="w-screen h-screen bg-black">
+        <div className="w-full grow bg-black">
             {props.children}
         </div>
     );

@@ -11,7 +11,7 @@ function App() {
     <>
       <TopNav></TopNav>
       <MainWrapper>
-        <h1 className="text-white text-6xl font-bold">
+        <h1 className="text-white text-4xl lg:text-6xl font-bold">
           Здравейте, аз съм  Диян и програмирам
         </h1>
       </MainWrapper>
