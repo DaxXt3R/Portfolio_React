@@ -3,17 +3,15 @@ import './App.css'
 
 import MainWrapper from "./components/MainWrapper.jsx"
 import TopNav from "./components/TopNav.jsx"
-
+import HomePage from "./components/HomePage.jsx"
 
 function App() {
 
   return (
     <>
-      <TopNav></TopNav>
       <MainWrapper>
-        <h1 className="text-white text-4xl lg:text-6xl font-bold">
-          Здравейте, аз съм  Диян и програмирам
-        </h1>
+        <TopNav></TopNav>
+        <HomePage></HomePage>
       </MainWrapper>
     </>
   )

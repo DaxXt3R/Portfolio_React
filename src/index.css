@@ -10,3 +10,33 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+
+@layer base{
+  :root{  
+    /* 1st we define css variables that hold the current colors to be applied */
+    --bg:     #FFFFFF;
+    --window: #E2E2E2;
+    --text:   #434343;
+    --bold:   #000000;
+    --muted:  #7F7F7F;
+    --accent: #D02E40;
+  }
+}
+
+.theme-light{
+  /* this is where we load the desired colors into the container vars */
+  --bg:     #FFFFFF;
+  --window: #E2E2E2;
+  --text:   #434343;
+  --bold:   #000000;
+  --muted:  #7F7F7F;
+  --accent: #D02E40;
+}
+.theme-dark{
+  --bg:     #262626;
+  --window: #171717;
+  --text:   #A8A8A8;
+  --bold:   #FFFFFF;
+  --muted:  #4B4B4B;
+  --accent: #D02E40;
+}
