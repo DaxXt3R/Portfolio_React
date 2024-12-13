@@ -10,7 +10,6 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-
 @layer base{
   :root{  
     /* 1st we define css variables that hold the current colors to be applied */
