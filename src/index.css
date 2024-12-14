@@ -39,3 +39,7 @@ body {
   --muted:  #4B4B4B;
   --accent: #D02E40;
 }
+
+.animateH1{
+  @apply duration-1000 transition-colors;
+}

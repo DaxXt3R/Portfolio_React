@@ -1,21 +1,29 @@
 import SocialLinks from "./SocialLinks";
 import ButtonToPage from "./ButtonToPage";
 
+import LanguageContext from "./Context/LanguageContext";
+import { useContext } from "react";
+
 export default function HomePage() {
+
+    const {lang}=useContext(LanguageContext)
+
     return (
-        <main className="px-4 my-auto">
+        <main className="px-4 my-auto ">
             <section className="flex flex-col lg:flex-row text-theme-text max-w-[1170px] mx-auto mt-8">
-                <div className="flex flex-col justify-between">
-                    <h1 className="text-theme-bold text-3xl lg:text-6xl font-bold mb-6">
-                    Здравейте, аз съм  
-                    <br />Диян и програмирам 
-                    <br /><span className="text-theme-accent">Back-end решения.</span>
-                    <br /> За вас.
+                <div className="flex flex-col justify-between ">
+                    <h1 className="text-theme-bold text-3xl lg:text-6xl font-bold mb-6 animateH1">{
+                        ["Hello, my name is","Здравейте, аз съм",][lang]
+                    }<br />{
+                        ["Diyan and I develop", "Диян и програмирам"][lang]
+                        } 
+                    <br /><span className="text-theme-accent animateH1">Back-end решения.</span>
+                    <br />{["For you.","За вас.",][lang]}
                     </h1>
                     <SocialLinks className="hidden lg:flex"></SocialLinks>
                 </div>
 
-                <img src="src/assets/red-dayCOVER 1.png" alt="" className="object-contain h-[430px] mx-auto drop-shadow-[4px_0px_6px_rgba(0,0,0,50%)]"/>
+                <img src="src/assets/red-dayCOVER 1.png" alt="" className="object-contain h-[430px] lg:h-[530px] mr-4 lg:ml-auto drop-shadow-[4px_0px_6px_rgba(0,0,0,50%)]"/>
                 
                 <hr className="border-2 rounded border-theme-muted lg:hidden"/>
                 <SocialLinks className="lg:hidden" ></SocialLinks>
@@ -31,7 +39,10 @@ export default function HomePage() {
                     <p className="text-theme-text text-justify font-medium">
                         Не са много на брой, защото се концентрирам в/у качество вместо количество. Ориентирвам се около разработването на Full-Stack приложения, защото искам да разбирам цялостния процес от-до. Списъкът постепенно ще расте във времето, но ако харесвате това което виждате за сега ще се радвам да работим заедно!
                     </p>
-                    <ButtonToPage href="/test1" >ПРОЕКТИ</ButtonToPage>
+
+                    <ButtonToPage href="/test1" >{
+                        ["PROJECTS","ПРОЕКТИ",][lang]
+                    }</ButtonToPage>
                 </div>
             </section>
         </main>
