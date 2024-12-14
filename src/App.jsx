@@ -7,6 +7,8 @@ import HomePage from "./components/HomePage.jsx"
 import LeftPageNav from "./components/LeftPageNav.jsx"
 
 function App() {
+  const [theme,setTheme]=useState(sessionStorage.getItem("theme")||"light") //light is default value in case theme doesnt exist in storage
+  const [accent,setAccent]=useState(sessionStorage.getItem("accent")||"red")
 
   return (
     <>
