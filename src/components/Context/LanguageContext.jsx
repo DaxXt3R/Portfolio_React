@@ -7,7 +7,7 @@ const LanguageContext = createContext({
 export default LanguageContext;
 
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(0);
+  const [lang, setLang] = useState(0);	//0-english, 1-bulgarian, ...
 
   return (
     <LanguageContext.Provider value={{lang,setLang}}>{children}</LanguageContext.Provider>
