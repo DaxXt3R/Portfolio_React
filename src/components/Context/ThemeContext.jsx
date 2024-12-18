@@ -19,7 +19,6 @@ export function ThemeProvider({children}) {		//this holds all the logic and pass
 		setTheme(theme=="light"? "dark":"light")
 	}
 
-
 	return (
 		<ThemeContext.Provider value={{ theme,toggleTheme }}>
 			{children}

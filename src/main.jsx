@@ -5,12 +5,15 @@ import App from "./App.jsx";
 
 import { ThemeProvider } from "./components/Context/ThemeContext.jsx";
 import { LanguageProvider } from "./components/Context/LanguageContext.jsx";
+import {WindowProvider} from "./components/Context/WindowContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider>
       <LanguageProvider>
-        <App />
+        <WindowProvider>
+          <App />
+        </WindowProvider>
       </LanguageProvider>
     </ThemeProvider>
   </StrictMode>

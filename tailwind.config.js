@@ -18,6 +18,7 @@ export default {
           bold: "var(--bold)", 
           muted: "var(--muted)", 
           accent: "var(--accent)", 
+          gradient: "var(--gradient)", 
         },
       },
     },
