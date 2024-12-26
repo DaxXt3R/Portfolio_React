@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 import MainWrapper from "./components/MainWrapper.jsx";

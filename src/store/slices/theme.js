@@ -4,7 +4,7 @@ const themeSlice = createSlice({
   name: "theme",
   /* define all the variables to be stored in the state */
   initialState: {
-    value: "light",
+    value: localStorage.getItem("theme") || "light",  /* if there is not theme in localStorage get light as a default */
     accent: "red",
   },
 
@@ -12,11 +12,14 @@ const themeSlice = createSlice({
   reducers: {
     toggle(state) {
       state.value = state.value === "light" ? "dark" : "light";
-      // console.log("theme slice activated!");
+      localStorage.setItem("theme",state.value)
+      // console.log("theme is",state.value);
     },
     // to change the accent you have to call accent("blue")
     accent(state, action) {
       state.accent = action.payload;
+      localStorage.setItem("accent",state.accent)
+
     },
   },
 });

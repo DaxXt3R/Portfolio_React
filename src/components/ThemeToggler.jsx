@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { themeActions } from "../store/slices/theme.js"; /* this imports all of the functions used to change the states in the slice store */
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ThemeToggler(props) {
   const dispatch = useDispatch(); /* Hooks have to be called at the top level */
   const currentTheme = useSelector((state) => state.theme.value);
   function toggleRedux() {
     dispatch(themeActions.toggle());
-    console.log("theme is", currentTheme);
+
   }
 
 
