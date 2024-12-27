@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ThemeContext from "./Context/ThemeContext";
+import ThemeContext from "../Context/ThemeContext";
 import styled from "styled-components";
 
 import { useSelector } from "react-redux";

@@ -1,12 +1,19 @@
 import { useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { windowActions } from "../store/slices/window";
 
-export default function ImagePanel({ src, desc, className, openWindow }) {
+export default function ImagePanel({ src, desc, className, openWindow, clickable=false }) {
   const [hovered, setHovered] = useState(false);
+  const dispatch = useDispatch();
+  function openWindow() {
+    if (clickable) {dispatch(windowActions.open())}
+  } 
 
   return (
     <div
       onClick={openWindow}
-      className={`${className} relative overflow-hidden rounded-2xl border-2 border-theme-muted hover:border-theme-accent cursor-pointer flex flex-col`}
+      className={`${className} relative overflow-hidden rounded-2xl border-2 border-theme-muted hover:border-theme-accent
+        ${clickable&&" cursor-pointer"} flex flex-col`}
       onMouseEnter={() => {
         setHovered(true);
       }}

@@ -1,7 +1,9 @@
-import LanguageContext from "./Context/LanguageContext";
+import LanguageContext from "../Context/LanguageContext";
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import ButtonToPage from "./ButtonToPage";
+import { useDispatch } from "react-redux";
+import { windowActions } from "../store/slices/window";
 
 const DashedLine = styled.hr`
   border-style: dashed;
@@ -14,8 +16,10 @@ export default function ModalWindow({
   description = "description = put the description here",
   github,
   btn = "btn",
-	closeWindow,
+  closeWindow,
 }) {
+  const dispatch=useDispatch()
+
   const { lang } = useContext(LanguageContext);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -42,9 +46,15 @@ export default function ModalWindow({
     // Get element's dimensions
     const elementWidth = event.currentTarget.offsetWidth;
     const elementHeight = event.currentTarget.offsetHeight;
-    // 
-    const confinedX = Math.max(0, Math.min(targetX, windowWidth - elementWidth));
-    const confinedY = Math.max(0, Math.min(targetY, windowHeight - elementHeight));
+    //
+    const confinedX = Math.max(
+      0,
+      Math.min(targetX, windowWidth - elementWidth)
+    );
+    const confinedY = Math.max(
+      0,
+      Math.min(targetY, windowHeight - elementHeight)
+    );
 
     setPosition({
       x: confinedX,
@@ -55,7 +65,6 @@ export default function ModalWindow({
   const mouseUpHandler = () => {
     setDragging(false);
   };
-
 
   return (
     <div
@@ -70,8 +79,9 @@ export default function ModalWindow({
       onMouseUp={mouseUpHandler}
     >
       <button
-        onClick={()=>{console.log("x button clicked");closeWindow()
-				}}
+        onClick={() => {
+          dispatch(windowActions.close())
+        }}
         className="material-symbols-rounded text-[40px] absolute right-6 top-3 text-theme-text hover:text-theme-muted p-0 size-7"
       >
         disabled_by_default

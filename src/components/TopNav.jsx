@@ -1,7 +1,7 @@
 import ThemeToggler from "./ThemeToggler";
-import ThemeContext from "./Context/ThemeContext";
+import ThemeContext from "../Context/ThemeContext";
 import { useContext } from "react";
-import LanguageContext from "./Context/LanguageContext";
+import LanguageContext from "../Context/LanguageContext";
 
 export default function TopNav() {
     const {theme} = useContext(ThemeContext);

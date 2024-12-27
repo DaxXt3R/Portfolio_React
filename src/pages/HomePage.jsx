@@ -1,9 +1,9 @@
-import SocialLinks from "./SocialLinks";
-import ButtonToPage from "./ButtonToPage";
-import ImagePanel from "./ImagePanel"
+import SocialLinks from "../components/SocialLinks";
+import ButtonToPage from "../components/ButtonToPage";
+import ImagePanel from "../components/ImagePanel"
 
 
-import LanguageContext from "./Context/LanguageContext";
+import LanguageContext from "../Context/LanguageContext";
 import { useContext } from "react";
 
 export default function HomePage() {
@@ -41,6 +41,7 @@ export default function HomePage() {
                 <ImagePanel 
                     src={"src/assets/nuchan panel.png"} 
                     className={"lg:w-[340px] mx-4 lg:mx-0"} 
+                    clickable
                     // desc={"NUchan е козметичен ъпдейт на 4chan.org с добавени функции"}
                     desc={
                         ["NUchan is a cosmetic visual update to 4chan.org with added features",
