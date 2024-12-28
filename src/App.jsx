@@ -1,48 +1,57 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { windowActions } from "./store/slices/window.js"; /* this imports all of the functions used to change the states in the slice store */
-import { createBrowserRouter, Link, RouterProvider } from "react-router";
-
+import { createBrowserRouter, RouterProvider } from "react-router";
 import "./App.css";
 
-import MainWrapper from "./components/MainWrapper.jsx";
-import TopNav from "./components/TopNav.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import LeftPageNav from "./components/LeftPageNav.jsx";
-import ModalWindow from "./components/ModalWindow.jsx";
 import SkillsPage from "./pages/Skills.jsx";
-import { Outlet } from "react-router";
+import NotFoundPage from "./pages/NotFound.jsx";
+import RootPage from "./pages/Root.jsx";
+import ContactsPage from "./pages/Contacts.jsx";
 
 
-function App() {
+export default function App() {
+	const router = createBrowserRouter([
+		{
+			path: "/",
+			element: (
+				<>
+					<RootPage></RootPage>
+				</>
+			),
+			errorElement: <NotFoundPage />,
+			children: [
+				{
+					path: "",
+					element: (
+						<>
+							<HomePage></HomePage>
+							<LeftPageNav></LeftPageNav>
+						</>
+					),
+				},
+				{
+					path: "/skills",
+					element: (
+						<>
+							<SkillsPage></SkillsPage>
+							<LeftPageNav></LeftPageNav>
+						</>
+					),
+				},
+				{
+					path: "/contacts",
+					element: (
+						<>
+							<ContactsPage></ContactsPage>
+							<LeftPageNav></LeftPageNav>
+						</>
+					),
+				},
+			],
+		},
 
-  const windowOpen = useSelector((state) => state.window.isOpen);
-  console.log("modal is open", windowOpen);
+		{ path: "/aboutMe", element: <SkillsPage></SkillsPage> },
+	]);
 
-
-  const router = createBrowserRouter([
-    { path: "/", 
-      element: 
-        <>
-          <MainWrapper>
-            <TopNav></TopNav>
-            <LeftPageNav></LeftPageNav>
-            {windowOpen && <ModalWindow heading="NUchan"></ModalWindow>}
-            <Outlet></Outlet>   {/* this is where the children are rendered */}
-          </MainWrapper>
-        </>,
-      children: [
-        { path: "/",element: <HomePage/> },
-        { path: "/skills",element: <SkillsPage/> },
-      ],
-    },
-    
-    { path: "/aboutMe", 
-      element: <SkillsPage></SkillsPage> },
-  ]);
-
-
-  return <RouterProvider router={router} />;
+	return <RouterProvider router={router} />;
 }
-
-export default App;
