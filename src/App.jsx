@@ -7,50 +7,52 @@ import SkillsPage from "./pages/Skills.jsx";
 import NotFoundPage from "./pages/NotFound.jsx";
 import RootPage from "./pages/Root.jsx";
 import ContactsPage from "./pages/Contacts.jsx";
-
+import AboutMepage from "./pages/AboutMe.jsx";
+import BiographyPage from "./pages/Biography.jsx";
 
 export default function App() {
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: (
-				<>
-					<RootPage></RootPage>
-				</>
-			),
+			element: (<><RootPage></RootPage></>),
 			errorElement: <NotFoundPage />,
 			children: [
 				{
 					path: "",
-					element: (
-						<>
+					element: (<>
 							<HomePage></HomePage>
 							<LeftPageNav></LeftPageNav>
-						</>
-					),
+						</>),
 				},
 				{
 					path: "/skills",
-					element: (
-						<>
+					element: (<>
 							<SkillsPage></SkillsPage>
 							<LeftPageNav></LeftPageNav>
-						</>
-					),
+						</>),
 				},
 				{
 					path: "/contacts",
-					element: (
-						<>
+					element: (<>
 							<ContactsPage></ContactsPage>
 							<LeftPageNav></LeftPageNav>
-						</>
-					),
+						</>),
+				},
+				{
+					path: "/aboutMe",
+					element: (<>
+							<AboutMepage></AboutMepage>
+							<LeftPageNav></LeftPageNav>
+						</>),
+				},
+				{
+					path: "/aboutMe/biography",
+					element: (<>
+							<BiographyPage></BiographyPage>
+						</>),
 				},
 			],
 		},
-
-		{ path: "/aboutMe", element: <SkillsPage></SkillsPage> },
 	]);
 
 	return <RouterProvider router={router} />;

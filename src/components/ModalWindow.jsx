@@ -1,4 +1,4 @@
-import LanguageContext from "../Context/LanguageContext";
+import LanguageContext from "../Context (not used)/LanguageContext";
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import ButtonToPage from "./ButtonToPage";

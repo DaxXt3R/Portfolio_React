@@ -45,3 +45,12 @@ body {
 .animateH1{
   @apply duration-1000 transition-colors;
 }
+.theme-h1{
+  @apply text-theme-bold text-3xl lg:text-6xl font-bold mb-6 animateH1
+}
+.theme-h2{
+  @apply font-bold text-xl text-theme-bold animateH1
+}
+.theme-p{
+  @apply text-theme-text text-justify font-medium duration-[.5s] transition-colors
+}

@@ -44,7 +44,8 @@ export default function LeftPageNav() {
 					active={activePage === 3}
 					onClick={() => {
 						toggleButton(3);
-					}}>
+					}}
+					href="/aboutMe">
 					{["About me", "За мен"][lang]}
 				</LeftPageNavButton>
 

@@ -5,7 +5,7 @@ export default function ContactsPage() {
 
 	return (
 		<main className="px-4 flex flex-col text-theme-text mt-8 items-center max-w-[1170px]">
-			<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold mb-6 animateH1 w-full">
+			<h1 className="theme-h1 w-full">
 				{["Let's work together!", "Нека работим заедно!"][lang]}
 			</h1>
 			<h3>

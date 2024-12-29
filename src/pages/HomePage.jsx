@@ -59,10 +59,10 @@ export default function HomePage() {
 				<ImagePanel src={"src/assets/nuchan panel.png"} className={"lg:w-[340px] mx-4 lg:mx-0"}></ImagePanel>
 
 				<div className="flex-col flex lg:w-[470px]">
-					<h2 className="font-bold text-xl text-theme-bold hidden lg:block">
+					<h2 className="theme-h2 hidden lg:block">
 						{["These are my personal projects.", "Това са личните ми проекти."][lang]}
 					</h2>
-					<p className="text-theme-text text-justify font-medium">
+					<p className="theme-p">
 						{
 							[
 								"They're not many, because right now I'm focusing on quality over quantity. I'm orienting myself toward Full-Stack development because I want to be able to build applications from bottom to top and understand every step of the production process. This list will steadily grow, but If you like what you see so far I'd be happy to work with you!",
@@ -71,7 +71,7 @@ export default function HomePage() {
 						}
 					</p>
 
-					<ButtonToPage href="/test1">{["PROJECTS", "ПРОЕКТИ"][lang]}</ButtonToPage>
+					<ButtonToPage href="/skills/projects">{["PROJECTS", "ПРОЕКТИ"][lang]}</ButtonToPage>
 				</div>
 			</section>
 		</main>
