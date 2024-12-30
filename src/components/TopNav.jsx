@@ -3,12 +3,11 @@ import { themeActions } from "../store/slices/theme";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router";
 
-
 export default function TopNav() {
 	const dispatch = useDispatch();
 	const lang = useSelector((state) => state.theme.lang);
-  const theme = useSelector((state) => state.theme.value);
-
+	console.log(lang);
+	const theme = useSelector((state) => state.theme.value);
 
 	function changeLang() {
 		dispatch(themeActions.toggleLang());
