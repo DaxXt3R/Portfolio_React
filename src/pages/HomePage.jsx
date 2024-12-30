@@ -25,7 +25,7 @@ export default function HomePage() {
 				<img
 					src="src/assets/red-dayCOVER 1.png"
 					alt=""
-					className="object-contain h-[430px] lg:h-[530px] mr-4 lg:ml-auto drop-shadow-[4px_0px_6px_rgba(0,0,0,50%)]"
+					className="object-contain h-[430px] lg:h-[530px] mr-4 lg:ml-auto drop-shadow-1"
 				/>
 
 				<hr className="border-2 rounded border-theme-muted lg:hidden" />

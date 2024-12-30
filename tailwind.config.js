@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       dropShadow:{
-        
+        "1": "4px 0px 6px rgba(0,0,0,50%)",
+        "2": "2px 2px 3px rgba(0,0,0,25%)"
       },
       backgroundImage:{
         "light": "linear-gradient(90deg, #979797 0%,#DADADA 6%, #FFFFFF 12%,  #FFFFFF 88%, #DADADA 94%, #979797 100%);",

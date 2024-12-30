@@ -10,6 +10,7 @@ const windowSlice = createSlice({
 		button: "",
 		link: "",
 		github: "",
+		cover: "",
 	},
 	reducers: {
 		toggleOpen(state) {
@@ -19,11 +20,12 @@ const windowSlice = createSlice({
 		open(state,action) {
 			state.isOpen = true;
       state.heading=action.payload.heading
-      // console.log(action.payload.heading);
       state.description=action.payload.description
       state.images=action.payload.images
       state.button=action.payload.button
+			state.link=action.payload.link
       state.github=action.payload.github
+			state.cover=action.payload.cover
 		},
 		close(state) {
 			state.isOpen = false;

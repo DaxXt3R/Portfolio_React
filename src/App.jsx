@@ -9,6 +9,7 @@ import RootPage from "./pages/Root.jsx";
 import ContactsPage from "./pages/Contacts.jsx";
 import AboutMepage from "./pages/AboutMe.jsx";
 import BiographyPage from "./pages/Biography.jsx";
+import ProjectsPage from "./pages/Projects.jsx";
 
 export default function App() {
 	const router = createBrowserRouter([
@@ -31,6 +32,12 @@ export default function App() {
 							<LeftPageNav></LeftPageNav>
 						</>),
 				},
+        {
+					path: "/skills/projects",
+					element: (<>
+							<ProjectsPage></ProjectsPage>
+						</>),
+				},
 				{
 					path: "/contacts",
 					element: (<>
@@ -51,6 +58,7 @@ export default function App() {
 							<BiographyPage></BiographyPage>
 						</>),
 				},
+				
 			],
 		},
 	]);
