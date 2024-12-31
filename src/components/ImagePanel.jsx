@@ -21,7 +21,7 @@ export default function ImagePanel({
 	return (
 		<div
 			onClick={openWindow}
-			className={`${className} relative overflow-hidden rounded-2xl border-2 border-theme-muted hover:border-theme-accent
+			className={`${className} relative overflow-hidden flex-1 rounded-2xl border-2 border-theme-muted hover:border-theme-accent
         ${clickable && " cursor-pointer"} flex flex-col`}
 			onMouseEnter={() => {
 				setHovered(true);
@@ -29,7 +29,7 @@ export default function ImagePanel({
 			onMouseLeave={() => {
 				setHovered(false);
 			}}>
-			<img src={src} alt="" className="grayscale hover:grayscale-0 duration-500 object-cover size-full" />
+			<img src={src} alt="" className="grayscale hover:grayscale-0 duration-500 object-cover size-full bg-theme-text" />
 			<div
 				id="label"
 				className={

@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider, useLocation, useNavigate } from "react-router";
 import "./App.css";
 
 import HomePage from "./pages/HomePage.jsx";
@@ -12,53 +12,69 @@ import BiographyPage from "./pages/Biography.jsx";
 import ProjectsPage from "./pages/Projects.jsx";
 
 export default function App() {
+
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: (<><RootPage></RootPage></>),
+			element: (
+				<>
+					<RootPage></RootPage>
+				</>
+			),
 			errorElement: <NotFoundPage />,
 			children: [
 				{
 					path: "",
-					element: (<>
+					element: (
+						<>
 							<HomePage></HomePage>
 							<LeftPageNav></LeftPageNav>
-						</>),
+						</>
+					),
 				},
 				{
 					path: "/skills",
-					element: (<>
+					element: (
+						<>
 							<SkillsPage></SkillsPage>
 							<LeftPageNav></LeftPageNav>
-						</>),
+						</>
+					),
 				},
-        {
+				{
 					path: "/skills/projects",
-					element: (<>
+					element: (
+						<>
 							<ProjectsPage></ProjectsPage>
-						</>),
+						</>
+					),
 				},
 				{
 					path: "/contacts",
-					element: (<>
+					element: (
+						<>
 							<ContactsPage></ContactsPage>
 							<LeftPageNav></LeftPageNav>
-						</>),
+						</>
+					),
 				},
 				{
 					path: "/aboutMe",
-					element: (<>
+					element: (
+						<>
 							<AboutMepage></AboutMepage>
 							<LeftPageNav></LeftPageNav>
-						</>),
+						</>
+					),
 				},
 				{
 					path: "/aboutMe/biography",
-					element: (<>
+					element: (
+						<>
 							<BiographyPage></BiographyPage>
-						</>),
+						</>
+					),
 				},
-				
 			],
 		},
 	]);

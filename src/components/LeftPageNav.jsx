@@ -1,18 +1,35 @@
 import { useEffect, useState } from "react";
 import LeftPageNavButton from "./LeftPageNavButton";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router";
 
 export default function LeftPageNav() {
 	const [activePage, setActivePage] = useState(0);
 	const lang = useSelector((state) => state.theme.lang);
+	const location = useLocation();
 
 	function toggleButton(index) {
 		setActivePage(index);
 	}
 
 	useEffect(() => {
-		setActivePage(1);
-	}, []);
+		switch (location.pathname) {
+			case "/":
+				setActivePage(1);
+				break;
+			case "/skills":
+				setActivePage(2);break;
+			case "/aboutMe":
+				setActivePage(3);
+				break;
+			case "/contacts":
+				setActivePage(4);
+				break;
+			default:
+				setActivePage(1);
+				break;
+		}
+	}, [location.pathname]);
 
 	return (
 		<aside className="flex-col h-[60vh] absolute left-10 top-[20vh] hidden lg:flex">

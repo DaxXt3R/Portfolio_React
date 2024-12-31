@@ -9,12 +9,10 @@ export default function ProjectsPage() {
 		<main className="px-4 flex flex-col text-theme-text items-center max-w-[1170px] m-auto">
 			<section>
 				<h1 className="theme-h1">Personal projects</h1>
-				<div>
+				<div className="h-[700px]  overflow-hidden grid grid-cols-3 gap-2 grid-rows-3">
 					<ImagePanel
 						src={"/nuchan panel.png"}
-						className={"lg:w-[340px] mx-4 lg:mx-0"}
 						clickable
-						// desc={"NUchan е козметичен ъпдейт на 4chan.org с добавени функции"}
 						desc={
 							[
 								"NUchan is a cosmetic visual update to 4chan.org with added features",
@@ -29,7 +27,16 @@ export default function ProjectsPage() {
 							],
 							button: "nuchan.net",
 							github: "https://github.com/DaxXt3R/NUchan",
-						}}/>
+						}}
+					/>
+					<ImagePanel src={"/imageDefault.jpg"} />
+					<ImagePanel src={"/imageDefault.jpg"} />
+					<ImagePanel src={"/imageDefault.jpg"} />
+					<ImagePanel src={"/imageDefault.jpg"} />
+					<ImagePanel src={"/imageDefault.jpg"} />
+					<ImagePanel src={"/imageDefault.jpg"} />
+					<ImagePanel src={"/imageDefault.jpg"} />
+					<ImagePanel src={"/imageDefault.jpg"} />
 				</div>
 			</section>
 		</main>

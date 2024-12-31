@@ -1,9 +1,28 @@
 import TechnologyBar from "../components/TechnologyBar";
 import ButtonToPage from "../components/ButtonToPage";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 export default function SkillsPage() {
 	const lang = useSelector((state) => state.theme.lang);
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		function handleScroll(event) {
+			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+			const isAtTop = window.scrollY == 0;
+
+			if (event.deltaY > 0 && isAtBottom) {
+				navigate("/aboutMe");
+			}
+			if (event.deltaY < 0 && isAtTop) {
+				navigate("/");
+			}
+		}
+		window.addEventListener("wheel", handleScroll);
+		return () => window.removeEventListener("wheel", handleScroll);
+	}, [navigate]);
 
 	return (
 		<main className="px-4 my-auto flex flex-col lg:flex-row text-theme-text lg:gap-20 gap-14 justify-center">
@@ -15,38 +34,67 @@ export default function SkillsPage() {
 					</li>
 					<TechnologyBar
 						icon="/technology logos/JavaScript-logo.png"
-						level={50}
+						level={75}
 						link={"https://developer.mozilla.org/en-US/docs/Web/JavaScript"}
 					/>
 					<TechnologyBar
 						icon="/technology logos/HTML5_logo_and_wordmark.svg.png"
-						level={25}
+						level={90}
 						link={"https://developer.mozilla.org/en-US/docs/Web/HTML"}
 					/>
-					<TechnologyBar icon="/technology logos/Tailwind_CSS_Logo.svg.png" link={"https://tailwindcss.com/"} />
-					<TechnologyBar icon="/technology logos/React-icon.svg.png" link={"https://react.dev/"} />
+					<TechnologyBar
+						icon="/technology logos/Tailwind_CSS_Logo.svg.png"
+						link={"https://tailwindcss.com/"}
+						level={60}
+					/>
+					<TechnologyBar
+						icon="/technology logos/React-icon.svg.png"
+						link={"https://react.dev/"}
+						level={50}
+					/>
 					<TechnologyBar
 						icon="/technology logos/Adobe-Photoshop-Logo-2015-2019.png"
 						link={"https://www.adobe.com/products/photoshop.html#"}
+						level={80}
 					/>
-					<TechnologyBar icon="/technology logos/Figma-logo.svg.png" link={"https://www.figma.com/"} />
-					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[225px] left-14 ">
+					<TechnologyBar
+						icon="/technology logos/Figma-logo.svg.png"
+						link={"https://www.figma.com/"}
+						level={35}
+					/>
+					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[250px] left-14 ">
 						Back-end
 					</li>
-					<TechnologyBar icon="/technology logos/next-js.svg" link={"https://nextjs.org/"} />
-					<TechnologyBar icon="/technology logos/Git_icon.svg.png" link={"https://git-scm.com/"} />
+					<TechnologyBar
+						icon="/technology logos/next-js.svg"
+						link={"https://nextjs.org/"}
+						level={40}
+					/>
+					<TechnologyBar
+						icon="/technology logos/Git_icon.svg.png"
+						link={"https://git-scm.com/"}
+						level={35}
+					/>
 					<TechnologyBar
 						icon="/technology logos/mongodb-original-icon-921x2048-hvrb89lu.png"
 						link={"https://www.mongodb.com/"}
+						level={25}
 					/>
-					<TechnologyBar icon="/technology logos/Python-logo-notext.svg.png" link={"https://www.python.org/"} />
-					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[385px] left-14 ">DevOps</li>
+					<TechnologyBar
+						icon="/technology logos/Python-logo-notext.svg.png"
+						link={"https://www.python.org/"}
+						level={15}
+					/>
+					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[425px] left-14 ">
+						DevOps
+					</li>
 					<TechnologyBar
 						icon="/technology logos/Amazon-Web-Services-AWS-Logo.png"
 						link={"https://aws.amazon.com/"}
+						level={15}
 					/>
-					<li className="z-0" id="verticalLines">
-						<hr className="border-theme-muted border-2 border-dashed rotate-0" />
+					<li className="z-0" id="verticalLines relative">
+						<hr className="border-theme-muted border-2 border-dashed -rotate-90 origin-bottom-left left-[55%] absolute w-full" />
 					</li>
 					<li className="flex justify-between ml-16 mr-4">
 						<span>начинаещ</span>
@@ -57,14 +105,24 @@ export default function SkillsPage() {
 			</section>
 
 			<section id="rightDescription" className=" flex flex-col flex-1 lg:max-w-[530px] gap-10">
-				<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1 text-center">Моят Стак</h1>
+				<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1 text-center">
+					Моят Стак
+				</h1>
 				<div className="flex justify-evenly items-center h-32">
 					<div className="flex flex-col w-20 h-full items-center ">
-						<img src="public/technology logos/React-icon.svg.png" className="my-auto drop-shadow-2" alt="" />
+						<img
+							src="public/technology logos/React-icon.svg.png"
+							className="my-auto drop-shadow-2"
+							alt=""
+						/>
 						<h4 className="font-bold lg:text-xl text-[#60DAFB] drop-shadow-md">REACT</h4>
 					</div>
 					<div className="flex flex-col w-20 h-full items-center ">
-						<img src="public/technology logos/next-js.svg" className="my-auto drop-shadow-2" alt="" />
+						<img
+							src="public/technology logos/next-js.svg"
+							className="my-auto drop-shadow-2"
+							alt=""
+						/>
 						<h4 className="font-bold lg:text-xl text-black drop-shadow-md">NEXT</h4>
 					</div>
 					<div className="flex flex-col w-20 h-full items-center justify-between">
@@ -103,7 +161,7 @@ export default function SkillsPage() {
 							{
 								[
 									"learn more about SQL databases like PostgreSQL since they are the industry-standart",
-									"науча повече за SQL бази данни като PostgreSQL тъй като са индустриален стан-дарт. Ще разгледам инстру-менти като Linux , Monit, GitHub Docker, Kubernetes. Също така имам силен интерес към ученето на Python, може би със Django, тъй като в началото програмирах игри с Python, много да станаопитен разработчик на видео игри.",
+									"науча повече за SQL бази данни като PostgreSQL тъй като са индустриален стан-дарт. Ще разгледам инстру-менти като Linux, Monit, GitHub Docker, Kubernetes. Също така имам силен интерес към ученето на Python, може би със Django, тъй като в началото програ-мирах игри с Python, много да стана опитен разработчик на видео игри.",
 								][lang]
 							}
 						</p>

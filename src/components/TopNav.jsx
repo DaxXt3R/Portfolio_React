@@ -12,7 +12,6 @@ const NavStyled = styled.nav`
 export default function TopNav() {
 	const dispatch = useDispatch();
 	const lang = useSelector((state) => state.theme.lang);
-	const theme = useSelector((state) => state.theme.value);
 
 	function changeLang() {
 		dispatch(themeActions.toggleLang());
@@ -25,10 +24,10 @@ export default function TopNav() {
 					home
 				</Link>
 
-				<ThemeToggler></ThemeToggler>
+				<ThemeToggler />
 				<div>
 					<button className="font-bold mr-7 text-xl align-middle" onClick={changeLang}>
-						{lang === 0 ? "EN" : "BG"}
+						{lang == 0 ? "EN" : "BG"}
 					</button>
 					<button className="material-symbols-rounded align-middle text-3xl">menu</button>
 				</div>

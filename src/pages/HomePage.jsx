@@ -2,9 +2,24 @@ import SocialLinks from "../components/SocialLinks";
 import ButtonToPage from "../components/ButtonToPage";
 import ImagePanel from "../components/ImagePanel";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 export default function HomePage() {
 	const lang = useSelector((state) => state.theme.lang);
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		function handleScroll(event) {
+			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+			if (event.deltaY > 0 && isAtBottom) {
+				navigate("/skills");
+				window.scrollTo({ top: 0 });
+			}
+		}
+		window.addEventListener("wheel", handleScroll);
+		return () => window.removeEventListener("wheel", handleScroll);
+	}, [navigate]);
 
 	return (
 		<main className="px-4 my-auto ">

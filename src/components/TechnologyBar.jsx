@@ -1,4 +1,12 @@
+import { useEffect, useState } from "react";
+
 export default function TechnologyBar({ icon, level, link }) {
+	const [startingLevel, setStartingLevel] = useState(0);
+	
+	useEffect(()=>{
+		setStartingLevel(level)
+	},[level])
+
 	return (
 		<li className="flex gap-5 items-center">
 			<a href={link}>
@@ -9,7 +17,9 @@ export default function TechnologyBar({ icon, level, link }) {
 				/>
 			</a>
 			<div className="w-full h-2 border-theme-text bg-none border-2 rounded overflow-hidden">
-				<div className={"bg-theme-accent h-full rounded-xl duration-1000 " + `w-[${level}%]`}></div>
+				<div
+					className="bg-theme-accent h-full rounded-xl duration-[2s] "
+					style={{ width: `${startingLevel}%` }}></div>
 			</div>
 		</li>
 	);
