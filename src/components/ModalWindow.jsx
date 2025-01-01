@@ -82,7 +82,7 @@ export default function ModalWindow() {
 				className="material-symbols-rounded text-[40px] absolute right-6 top-3 text-theme-text hover:text-theme-muted p-0 size-7">
 				disabled_by_default
 			</button>
-			<h1 className="lg:text-6xl text-3xl font-bold text-theme-bold duration-700">{heading}</h1>
+			<h5 className="theme-h1 duration-700">{heading}</h5>
 			<hr className="decoration-2 border-[1px] border-theme-muted border-dashed duration-700" />
 			<div className="flex flex-col lg:flex-row lg:gap-6 gap-3 lg:pt-8 pt-2 h-full">
 				<div className=" lg:w-1/2 ">

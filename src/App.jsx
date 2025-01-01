@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider, useLocation, useNavigate } from "react-router";
 import "./App.css";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import HomePage from "./pages/HomePage.jsx";
 import LeftPageNav from "./components/LeftPageNav.jsx";
@@ -12,6 +14,35 @@ import BiographyPage from "./pages/Biography.jsx";
 import ProjectsPage from "./pages/Projects.jsx";
 
 export default function App() {
+	const lang = useSelector((state) => state.theme.lang);
+	useEffect(() => {
+		function animateH1Text() {
+			const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+			document.querySelectorAll("h1, h2, h4").forEach((element) => {
+				const originalText = element.innerText;
+
+				let iterations = 0;
+				const interval = setInterval(() => {
+					const splitText = element.innerText.split("");
+					const randomizedText = splitText
+						.map((letter, index) => {
+							if (index < iterations) {
+								return originalText[index];
+							}
+							return letters[Math.floor(Math.random() * letters.length)];
+						})
+						.join("");
+					element.innerText = randomizedText;
+					if (iterations >= originalText.length) {
+						clearInterval(interval);
+					}
+					iterations+=1/3;
+				}, 15);
+			});
+		}
+		animateH1Text();
+	}, [lang]);
 
 	const router = createBrowserRouter([
 		{

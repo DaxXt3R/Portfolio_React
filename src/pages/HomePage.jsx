@@ -25,15 +25,20 @@ export default function HomePage() {
 		<main className="px-4 my-auto ">
 			<section className="flex flex-col lg:flex-row text-theme-text max-w-[1170px] mx-auto mt-8">
 				<div className="flex flex-col justify-between ">
-					<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold mb-6 animateH1">
-						{["Hello, my name is", "Здравейте, аз съм"][lang]}
-						<br />
-						{["Diyan and I develop", "Диян и програмирам"][lang]}
-						<br />
-						<span className="text-theme-accent animateH1">Back-end решения.</span>
-						<br />
-						{["For you.", "За вас."][lang]}
-					</h1>
+					<div className="flex flex-col gap-2">
+						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
+							{["Hello, my name is", "Здравейте, аз съм"][lang]}
+						</h1>
+						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
+							{["Diyan and I develop", "Диян и програмирам"][lang]}
+						</h1>
+						<h1 className="text-theme-accent text-3xl lg:text-6xl font-bold animateH1 ">
+							{["Back-end solutions", "Back-end решения"][lang]}
+						</h1>
+						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
+							{["For you.", "За вас."][lang]}
+						</h1>
+					</div>
 					<SocialLinks className="hidden lg:flex"></SocialLinks>
 				</div>
 
@@ -71,7 +76,9 @@ export default function HomePage() {
 						button: "nuchan.net",
 						github: "https://github.com/DaxXt3R/NUchan",
 					}}></ImagePanel>
-				<ImagePanel src={"src/assets/nuchan panel.png"} className={"lg:w-[340px] mx-4 lg:mx-0"}></ImagePanel>
+				<ImagePanel
+					src={"src/assets/nuchan panel.png"}
+					className={"lg:w-[340px] mx-4 lg:mx-0"}></ImagePanel>
 
 				<div className="flex-col flex lg:w-[470px]">
 					<h2 className="theme-h2 hidden lg:block">

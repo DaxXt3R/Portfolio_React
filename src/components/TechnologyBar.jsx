@@ -3,9 +3,14 @@ import { useEffect, useState } from "react";
 export default function TechnologyBar({ icon, level, link }) {
 	const [startingLevel, setStartingLevel] = useState(0);
 	
-	useEffect(()=>{
-		setStartingLevel(level)
-	},[level])
+  useEffect(() => {
+    setStartingLevel(0); // Reset to 0 before starting the animation
+    const timer = setTimeout(() => {
+      setStartingLevel(level);
+    }, 100); // Delay to ensure the reset takes effect
+
+    return () => clearTimeout(timer); // Cleanup the timer
+  }, [level]);
 
 	return (
 		<li className="flex gap-5 items-center">

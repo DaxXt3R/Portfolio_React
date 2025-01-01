@@ -9,7 +9,7 @@ export default function ProjectsPage() {
 		<main className="px-4 flex flex-col text-theme-text items-center max-w-[1170px] m-auto">
 			<section>
 				<h1 className="theme-h1">Personal projects</h1>
-				<div className="h-[700px]  overflow-hidden grid grid-cols-3 gap-2 grid-rows-3">
+				<div className="lg:h-[500px] flex flex-col overflow-hidden lg:grid lg:grid-cols-3 gap-2 lg:grid-rows-2">
 					<ImagePanel
 						src={"/nuchan panel.png"}
 						clickable
@@ -34,9 +34,7 @@ export default function ProjectsPage() {
 					<ImagePanel src={"/imageDefault.jpg"} />
 					<ImagePanel src={"/imageDefault.jpg"} />
 					<ImagePanel src={"/imageDefault.jpg"} />
-					<ImagePanel src={"/imageDefault.jpg"} />
-					<ImagePanel src={"/imageDefault.jpg"} />
-					<ImagePanel src={"/imageDefault.jpg"} />
+
 				</div>
 			</section>
 		</main>

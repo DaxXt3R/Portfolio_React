@@ -22,6 +22,7 @@ body {
   }
 }
 
+
 .theme-light{
   /* this is where we load the desired colors into the container vars */
   --bg:     #FFFFFF;
@@ -53,4 +54,10 @@ body {
 }
 .theme-p{
   @apply text-theme-text text-justify font-medium duration-[.5s] transition-colors
+}
+.timeline-icon{
+  @apply timeline-middle text-3xl text-theme-accent duration-500
+}
+.timeline-paragraph{
+  @apply timeline-end timeline-box bg-theme-window shadow-md duration-500 text-theme-text
 }

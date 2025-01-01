@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { themeActions } from "../store/slices/theme.js"; /* this imports all of the functions used to change the states in the slice store */
 import { useDispatch, useSelector } from "react-redux";
 
@@ -10,7 +9,7 @@ export default function ThemeToggler(props) {
 	}
 
 	return (
-		<label className={"grid cursor-pointer place-items-center"}>
+		<label className={"grid cursor-pointer place-items-center select-none"}>
 			<input
 				type="checkbox"
 				value="light"

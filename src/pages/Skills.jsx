@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
+// {["english","bulgarian"][lang]}
+
 export default function SkillsPage() {
 	const lang = useSelector((state) => state.theme.lang);
 	const navigate = useNavigate();
@@ -27,7 +29,7 @@ export default function SkillsPage() {
 	return (
 		<main className="px-4 my-auto flex flex-col lg:flex-row text-theme-text lg:gap-20 gap-14 justify-center">
 			<section id="leftSkills" className=" flex flex-col flex-1 lg:max-w-[530px] relative gap-4">
-				<h1 className="theme-h1 text-center">Умения</h1>
+				<h1 className="theme-h1 text-center">{["Skills","Умения"][lang]}</h1>
 				<ul className="flex-col gap-3 flex relative z-10">
 					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[-16px] left-14 ">
 						Front-end
@@ -106,7 +108,7 @@ export default function SkillsPage() {
 
 			<section id="rightDescription" className=" flex flex-col flex-1 lg:max-w-[530px] gap-10">
 				<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1 text-center">
-					Моят Стак
+				{["My stack","Моят стак"][lang]}
 				</h1>
 				<div className="flex justify-evenly items-center h-32">
 					<div className="flex flex-col w-20 h-full items-center ">
@@ -115,7 +117,7 @@ export default function SkillsPage() {
 							className="my-auto drop-shadow-2"
 							alt=""
 						/>
-						<h4 className="font-bold lg:text-xl text-[#60DAFB] drop-shadow-md">REACT</h4>
+						<h5 className="font-bold lg:text-xl text-[#60DAFB] drop-shadow-md">REACT</h5>
 					</div>
 					<div className="flex flex-col w-20 h-full items-center ">
 						<img
@@ -123,7 +125,7 @@ export default function SkillsPage() {
 							className="my-auto drop-shadow-2"
 							alt=""
 						/>
-						<h4 className="font-bold lg:text-xl text-black drop-shadow-md">NEXT</h4>
+						<h5 className="font-bold lg:text-xl text-black drop-shadow-md">NEXT</h5>
 					</div>
 					<div className="flex flex-col w-20 h-full items-center justify-between">
 						<img
@@ -131,7 +133,7 @@ export default function SkillsPage() {
 							className="my-auto h-2/3 drop-shadow-2"
 							alt=""
 						/>
-						<h4 className="font-bold lg:text-xl text-[#599636] drop-shadow-md">MongoDB</h4>
+						<h5 className="font-bold lg:text-xl text-[#599636] drop-shadow-md">MongoDB</h5>
 					</div>
 					<div className="flex flex-col w-20 h-full items-center">
 						<img
@@ -139,35 +141,35 @@ export default function SkillsPage() {
 							className="my-auto drop-shadow-2"
 							alt=""
 						/>
-						<h4 className="font-bold lg:text-xl text-[#FF9100] drop-shadow-md">Firebase</h4>
+						<h5 className="font-bold lg:text-xl text-[#FF9100] drop-shadow-md">Firebase</h5>
 					</div>
 				</div>
 
 				<div className="flex lg:flex-row flex-col gap-4 font-medium text-theme-text">
 					<article className="flex-1">
-						<h2 className="theme-h2">В момента използвам</h2>
+						<h2 className="theme-h2 line-clamp-1">{["Right now I'm using","В момента ползвам"][lang]}</h2>
 						<p className="theme-p">
 							{
 								[
-									"",
+									"React за front-end с Tailwind класове и DaisyUI ако ми трябват бързи компоненти. Next.js за API-овете ми",
 									"React за front-end с Tailwind класове и DaisyUI ако ми трябват бързи компоненти. Next.js за API-овете ми",
 								][lang]
 							}
 						</p>
 					</article>
 					<article className="flex-1">
-						<h2 className="theme-h2">В бъдещето ще</h2>
+						<h2 className="theme-h2 line-clamp-1">{["In the future I will","В бъдещето ще"][lang]}</h2>
 						<p className="theme-p">
 							{
 								[
-									"learn more about SQL databases like PostgreSQL since they are the industry-standart",
-									"науча повече за SQL бази данни като PostgreSQL тъй като са индустриален стан-дарт. Ще разгледам инстру-менти като Linux, Monit, GitHub Docker, Kubernetes. Също така имам силен интерес към ученето на Python, може би със Django, тъй като в началото програ-мирах игри с Python, много да стана опитен разработчик на видео игри.",
+									"learn more about SQL databases like PostgreSQL since they are the industry-standart. I will explore Linux, Monit, Github, Docker, Kubernetes. I also have a strong interest for Python and Django, since at the start of my coding journey I was tinkering with video-game program-ming in Python. I would really like to become an experienced video-game developer.",
+									"науча повече за SQL бази данни като PostgreSQL тъй като са индустриален стан-дарт. Ще разгледам инстру-менти като Linux, Monit, GitHub, Docker, Kubernetes. Също така имам силен интерес към ученето на Python, може би със Django, тъй като в началото програ-мирах игри с Python, много да стана опитен разработчик на видео игри.",
 								][lang]
 							}
 						</p>
 					</article>
 				</div>
-				<ButtonToPage href={"/skills/projects"}>КЪМ ПРОЕКТИ</ButtonToPage>
+				<ButtonToPage href={"/skills/projects"}>{["PROJECTS", "ПРОЕКТИ"][lang]}</ButtonToPage>
 			</section>
 		</main>
 	);
