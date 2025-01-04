@@ -25,7 +25,7 @@ export default function HomePage() {
 		<main className="px-4 my-auto ">
 			<section className="flex flex-col lg:flex-row text-theme-text max-w-[1170px] mx-auto mt-8">
 				<div className="flex flex-col justify-between ">
-					<div className="flex flex-col gap-2">
+					<div className="flex flex-col gap-2 w-full">
 						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
 							{["Hello, my name is", "Здравейте, аз съм"][lang]}
 						</h1>
@@ -45,7 +45,7 @@ export default function HomePage() {
 				<img
 					src="src/assets/red-dayCOVER 1.png"
 					alt=""
-					className="object-contain h-[430px] lg:h-[530px] mr-4 lg:ml-auto drop-shadow-1"
+					className="object-contain h-[430px] lg:h-[530px] mr-4 lg:ml-auto drop-shadow-1 mt-10 lg:mt-0"
 				/>
 
 				<hr className="border-2 rounded border-theme-muted lg:hidden" />
@@ -77,7 +77,7 @@ export default function HomePage() {
 						github: "https://github.com/DaxXt3R/NUchan",
 					}}></ImagePanel>
 				<ImagePanel
-					src={"src/assets/nuchan panel.png"}
+					
 					className={"lg:w-[340px] mx-4 lg:mx-0"}></ImagePanel>
 
 				<div className="flex-col flex lg:w-[470px]">

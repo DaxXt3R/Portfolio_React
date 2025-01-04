@@ -113,7 +113,7 @@ export default function SkillsPage() {
 				<div className="flex justify-evenly items-center h-32">
 					<div className="flex flex-col w-20 h-full items-center ">
 						<img
-							src="public/technology logos/React-icon.svg.png"
+							src="technology logos/React-icon.svg.png"
 							className="my-auto drop-shadow-2"
 							alt=""
 						/>
@@ -147,7 +147,7 @@ export default function SkillsPage() {
 
 				<div className="flex lg:flex-row flex-col gap-4 font-medium text-theme-text">
 					<article className="flex-1">
-						<h2 className="theme-h2 line-clamp-1">{["Right now I'm using","В момента ползвам"][lang]}</h2>
+						<h2 className="theme-h2 h-8 overflow-hidden">{["Right now I'm using","В момента ползвам"][lang]}</h2>
 						<p className="theme-p">
 							{
 								[
@@ -158,7 +158,7 @@ export default function SkillsPage() {
 						</p>
 					</article>
 					<article className="flex-1">
-						<h2 className="theme-h2 line-clamp-1">{["In the future I will","В бъдещето ще"][lang]}</h2>
+						<h2 className="theme-h2 h-8 overflow-hidden">{["In the future I will","В бъдещето ще"][lang]}</h2>
 						<p className="theme-p">
 							{
 								[

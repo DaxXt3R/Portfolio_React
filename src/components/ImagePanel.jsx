@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { windowActions } from "../store/slices/window";
 
 export default function ImagePanel({
-	src,
+	src="/imageDefault.jpg",
 	desc,
 	className,
 	openWindow,

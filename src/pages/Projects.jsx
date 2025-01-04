@@ -6,10 +6,10 @@ export default function ProjectsPage() {
 	const lang = useSelector((state) => state.theme.lang);
 
 	return (
-		<main className="px-4 flex flex-col text-theme-text items-center max-w-[1170px] m-auto">
+		<main className="px-4 flex flex-col text-theme-text gap-8 items-center max-w-[1170px] m-auto">
+			<h1 className="theme-h1 w-full">{["Personal projects","Лични проекти"][lang]}</h1>
 			<section>
-				<h1 className="theme-h1">Personal projects</h1>
-				<div className="lg:h-[500px] flex flex-col overflow-hidden lg:grid lg:grid-cols-3 gap-2 lg:grid-rows-2">
+				<div className="lg:h-[400px] lg:px-20 flex flex-col overflow-hidden lg:grid lg:grid-cols-3 gap-2 lg:grid-rows-2">
 					<ImagePanel
 						src={"/nuchan panel.png"}
 						clickable
@@ -29,12 +29,11 @@ export default function ProjectsPage() {
 							github: "https://github.com/DaxXt3R/NUchan",
 						}}
 					/>
-					<ImagePanel src={"/imageDefault.jpg"} />
-					<ImagePanel src={"/imageDefault.jpg"} />
-					<ImagePanel src={"/imageDefault.jpg"} />
-					<ImagePanel src={"/imageDefault.jpg"} />
-					<ImagePanel src={"/imageDefault.jpg"} />
-
+					<ImagePanel />
+					<ImagePanel />
+					<ImagePanel />
+					<ImagePanel />
+					<ImagePanel />
 				</div>
 			</section>
 		</main>

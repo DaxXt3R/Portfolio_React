@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import HistoryTimeline from "../components/HistoryTimeline";
@@ -29,7 +28,7 @@ export default function AboutMepage() {
 	}, [navigate]);
 
 	return (
-		<main className="px-4 flex flex-col text-theme-text items-center max-w-[1170px] my-auto mx-auto">
+		<main className="px-4 flex flex-col text-theme-text items-center max-w-[1170px] my-auto mx-auto gap-4">
 			<section className=" mb-10 w-full">
 				{/* ---------------- TIMELINE DESKTOP ---------------- */}
 				<h1 className="theme-h1 pb-10">{["My journey so far", "Моят път до тук"][lang]}</h1>
@@ -123,39 +122,40 @@ export default function AboutMepage() {
 				</ul>
 			</section>
 
-			<section className="flex flex-col lg:flex-row lg:gap-28 lg:h-[400px] gap-10 mt-10">
+			<section className="flex flex-col lg:flex-row lg:gap-28 lg:h-fit gap-10 mt-4">
 				<article className="flex-1">
 					<h1 className="theme-h1">{["Upbringing", "Произход"][lang]}</h1>
 					<div className="w-full  flex flex-row gap-4">
 						<img src="imageDefault.jpg" alt="" className="w-2/5 lg:object-cover object-contain " />
 
-						<p className="w-3/5 text-justify overflow-hidden">
+						<p className="w-3/5 text-justify">
 							{
 								[
-									"Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni nostrum laborum pariatur fuga magnam adipisci enim nobis. Aliquid, illo sit. Magnam nulla harum hic quam dolorum totam. Nisi enim nesciunt deleniti? Earum, veniam dignissimos? Adipisci sunt vitae iure quo neque, nihil enim tenetur sit soluta, iste nulla est deserunt atque doloribus, nam repellat maxime modi pariatur. Laudantium ratione repellendus, incidunt dolorum animi minus alias sed reprehenderit, perspiciatis adipisci soluta quibusdam?",
-									"Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni nostrum laborum pariatur fuga magnam adipisci enim nobis. Aliquid, illo sit. Magnam nulla harum hic quam dolorum totam. Nisi enim nesciunt deleniti? Earum, veniam dignissimos? Adipisci sunt vitae iure quo neque, nihil enim tenetur sit soluta, iste nulla est deserunt atque doloribus, nam repellat maxime modi pariatur.unt vitae iure quo neque, nihil enim tenetur sit soluta, iste nulla est deserunt atque doloribus, nam repellat maxime modi pariatur.",
+									"Growing up, I was a curious and determined kid with big dreams but no clear direction. Inspired by my dad’s construction career, I pursued architecture as a practical path. Along the way, I discovered my passion for solving problems and creating, which eventually led me to programming—a field where I could build, innovate, and challenge myself in ways I’d never imagined.",
+									"Като дете бях любопитен и упорит, с големи мечти, но без ясно направление. Вдъхновен от кариерата на баща ми в строителството, избрах архитекту-рата като практичен път. По пътя открих страстта си към реша-ването на проблеми и създава-нето, която в крайна сметка ме насочи към програмирането – поле, в което мога да изграждам, иновирам и се предизвиквам.",
 								][lang]
 							}
 						</p>
 					</div>
 				</article>
 
-				<article className="flex-1">
-					<h1 className="theme-h1">{["Education", "Обучение"][lang]}</h1>
-					<div className="flex gap-4 size-full">
+				<article className="flex-1 text-end">
+					<h1 className="theme-h1 text-start">{["Education", "Обучение"][lang]}</h1>
+					<div className="flex gap-4 w-full mb-2">
 						<img src="imageDefault.jpg" alt="" className="w-2/5 object-cover" />
 						<p className="w-3/5 text-justify">
 							{
 								[
-									"Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni nostrum laborum pariatur fuga magnam adipisci enim nobis. Aliquid, illo sit. Magnam nulla harum hic quam dolorum totam. Nisi enim nesciunt deleniti? Earum, veniam dignissimos? Adipisci sunt vitae iure quo neque, nihil enim tenetur sit soluta, iste nulla est deserunt atque doloribus, nam repellat maxime modi pariatur. Laudantium ratione repellendus, incidunt dolorum animi minus alias sed reprehenderit, perspiciatis adipisci soluta quibusdam?",
-									"Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni nostrum laborum pariatur fuga magnam adipisci enim nobis. Aliquid, illo sit. Magnam nulla harum hic quam dolorum totam. Nisi enim nesciunt deleniti? Earum, veniam dignissimos? Adipisci sunt vitae iure quo neque, nihil enim tenetur sit soluta, iste nulla est deserunt atque doloribus, nam repellat maxime modi pariatur. Laudantium ratione repellendus, incidunt dolorum animi minus alias sed reprehenderit, perspiciatis adipisci soluta quibusdam?",
+									"I earned a degree in architecture, but my true passion emerged outside the classroom when I began teaching myself to code. From experimenting with game engines to completing professional courses like The Web Developer Bootcamp and React – The Complete Guide, I’ve built a strong foundation in web development and software engineering, driven by curiosity and a commitment to lifelong learning.",
+									"Завърших архитектура, но истин-ската ми страст се разкри извън университета, когато започнах да се уча да програмирам. От експериментиране с видео игри до завършване на професионал-ни курсове като The Web Developer Bootcamp и React – The Complete Guide, изградих стабил-на основа в уеб разработката и софтуерното инженерство, воден от любопитство и стремеж към постоянно развитие.",
 								][lang]
 							}
-							<ButtonToPage href={"/aboutMe/biography"}>
-								{["BIOGRAPHY", "БИОГРАФИЯ"][lang]}
-							</ButtonToPage>
+							<br />
 						</p>
 					</div>
+					<ButtonToPage href={"/aboutMe/biography"}>
+						{["BIOGRAPHY", "БИОГРАФИЯ"][lang]}
+					</ButtonToPage>
 				</article>
 			</section>
 		</main>
