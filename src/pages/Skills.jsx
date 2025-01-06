@@ -3,6 +3,7 @@ import ButtonToPage from "../components/ButtonToPage";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import { motion } from "motion/react";
 
 // {["english","bulgarian"][lang]}
 
@@ -26,15 +27,22 @@ export default function SkillsPage() {
 		return () => window.removeEventListener("wheel", handleScroll);
 	}, [navigate]);
 
+	const MotionTechnologyBar = motion.create(TechnologyBar);
+
 	return (
 		<main className="px-4 my-auto flex flex-col lg:flex-row text-theme-text lg:gap-20 gap-14 justify-center">
-			<section id="leftSkills" className=" flex flex-col flex-1 lg:max-w-[530px] relative gap-4">
-				<h1 className="theme-h1 text-center">{["Skills","Умения"][lang]}</h1>
+			<motion.section
+				id="leftSkills"
+				className=" flex flex-col flex-1 lg:max-w-[530px] relative gap-4"
+				initial={{ opacity: 0, y: "5vh" }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5 }}>
+				<h1 className="theme-h1 text-center">{["Skills", "Умения"][lang]}</h1>
 				<ul className="flex-col gap-3 flex relative z-10">
 					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[-16px] left-14 ">
 						Front-end
 					</li>
-					<TechnologyBar
+					<MotionTechnologyBar
 						icon="/technology logos/JavaScript-logo.png"
 						level={75}
 						link={"https://developer.mozilla.org/en-US/docs/Web/JavaScript"}
@@ -95,20 +103,23 @@ export default function SkillsPage() {
 						link={"https://aws.amazon.com/"}
 						level={15}
 					/>
-					<li className="z-0" id="verticalLines relative">
-						<hr className="border-theme-muted border-2 border-dashed -rotate-90 origin-bottom-left left-[55%] absolute w-full" />
-					</li>
+
 					<li className="flex justify-between ml-16 mr-4">
 						<span>начинаещ</span>
 						<span>основни</span>
 						<span>напреднал</span>
 					</li>
 				</ul>
-			</section>
+			</motion.section>
 
-			<section id="rightDescription" className=" flex flex-col flex-1 lg:max-w-[530px] gap-10">
+			<motion.section
+				id="rightDescription"
+				className=" flex flex-col flex-1 lg:max-w-[530px] gap-10"
+				initial={{ opacity: 0, y: "5vh" }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5, delay: 0.3 }}>
 				<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1 text-center">
-				{["My stack","Моят стак"][lang]}
+					{["My stack", "Моят стак"][lang]}
 				</h1>
 				<div className="flex justify-evenly items-center h-32">
 					<div className="flex flex-col w-20 h-full items-center ">
@@ -145,20 +156,56 @@ export default function SkillsPage() {
 					</div>
 				</div>
 
-				<div className="flex lg:flex-row flex-col gap-4 font-medium text-theme-text">
+				<div className="flex lg:flex-row flex-col gap-8 font-medium text-theme-text">
 					<article className="flex-1">
-						<h2 className="theme-h2 h-8 overflow-hidden">{["Right now I'm using","В момента ползвам"][lang]}</h2>
-						<p className="theme-p">
+						<h2 className="theme-h2 h-8 overflow-hidden">
+							{["Right now I'm using", "В момента ползвам"][lang]}
+						</h2>
+						<p className="theme-p hyphens-auto">
+							{["React for the front-end with ", "React за front-end с "][lang]}
+							<a href="https://tailwindcss.com/" className="text-theme-accent hover:underline">
+								Tailwind
+							</a>
+							{[" classes and ", " класове и "][lang]}
+							<a href="https://daisyui.com/" className="text-theme-accent hover:underline">
+								DaisyUI
+							</a>
+							{
+								[" if I just need some generic components. ", " ако ми трябват бързи компоненти. "][
+									lang
+								]
+							}
+							<a href="https://redux.js.org/" className="text-theme-accent hover:underline">
+								Redux
+							</a>
 							{
 								[
-									"React за front-end с Tailwind класове и DaisyUI ако ми трябват бързи компоненти. Next.js за API-овете ми",
-									"React за front-end с Tailwind класове и DaisyUI ако ми трябват бързи компоненти. Next.js за API-овете ми",
+									" for component wide state management and ",
+									" за раздаване на данни м/у компоненти и ",
 								][lang]
 							}
+							<a href="https://motion.dev/" className="text-theme-accent hover:underline">
+								Motion
+							</a>
+							{[" for animations. ", " за анимации. "][lang]}
+							<a href="https://nextjs.org/" className="text-theme-accent hover:underline">
+								Next
+							</a>
+							{[" for animations. ", " за back-end с  "][lang]}
+							<a href="https://mongoosejs.com/" className="text-theme-accent hover:underline">
+								Mongoose
+							</a>
+							{[" for animations. ", " за интеграция с MongoDB "][lang]}
+							<a href="https://www.passportjs.org/" className="text-theme-accent hover:underline">
+								Passport
+							</a>
+							{[" for authentication ", " за автентикация "][lang]}
 						</p>
 					</article>
 					<article className="flex-1">
-						<h2 className="theme-h2 h-8 overflow-hidden">{["In the future I will","В бъдещето ще"][lang]}</h2>
+						<h2 className="theme-h2 h-8 overflow-hidden">
+							{["In the future I will", "В бъдещето ще"][lang]}
+						</h2>
 						<p className="theme-p">
 							{
 								[
@@ -170,7 +217,7 @@ export default function SkillsPage() {
 					</article>
 				</div>
 				<ButtonToPage href={"/skills/projects"}>{["PROJECTS", "ПРОЕКТИ"][lang]}</ButtonToPage>
-			</section>
+			</motion.section>
 		</main>
 	);
 }

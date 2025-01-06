@@ -5,7 +5,7 @@ export default function HistoryTimeline() {
 	const lang = useSelector((state) => state.theme.lang);
 
 	return (
-		<section className="w-full">
+		<section className="w-full hidden lg:block">
 			<hr className="border-2 border-theme-text rounded translate-y-[114px]" />
 			<ul className="flex z-10 relative">
 				<HistoryTimelineEvent year={2016} icon={"school"}>

@@ -10,7 +10,7 @@ export default {
 				2: "2px 2px 3px rgba(0,0,0,25%);",
 			},
 			boxShadow: {
-				whattheFuck: "2px 2px 4px 1px rgba(0,0,0,50%);",
+				1: "2px 2px 4px 1px rgba(0,0,0,25%);",
 			},
 			backgroundImage: {
 				light:

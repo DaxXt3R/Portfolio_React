@@ -4,6 +4,7 @@ import ImagePanel from "../components/ImagePanel";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
+import { motion } from "motion/react";
 
 export default function HomePage() {
 	const lang = useSelector((state) => state.theme.lang);
@@ -23,9 +24,17 @@ export default function HomePage() {
 
 	return (
 		<main className="px-4 my-auto ">
-			<section className="flex flex-col lg:flex-row text-theme-text max-w-[1170px] mx-auto mt-8">
+			<motion.section
+				className="flex flex-col lg:flex-row text-theme-text max-w-[1170px] mx-auto mt-8"
+				initial={{ opacity: 0, y: "5vh" }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.3 }}>
 				<div className="flex flex-col justify-between ">
-					<div className="flex flex-col gap-2 w-full">
+					<motion.div
+						className="flex flex-col gap-2 w-full"
+						initial={{ opacity: 0, y: "5vh" }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.3 }}>
 						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
 							{["Hello, my name is", "Здравейте, аз съм"][lang]}
 						</h1>
@@ -38,7 +47,7 @@ export default function HomePage() {
 						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
 							{["For you.", "За вас."][lang]}
 						</h1>
-					</div>
+					</motion.div>
 					<SocialLinks className="hidden lg:flex"></SocialLinks>
 				</div>
 
@@ -50,10 +59,19 @@ export default function HomePage() {
 
 				<hr className="border-2 rounded border-theme-muted lg:hidden" />
 				<SocialLinks className="lg:hidden"></SocialLinks>
-			</section>
-			<hr className="border-2 rounded border-theme-muted max-w-[1170px] mx-auto" />
+			</motion.section>
+			<motion.hr
+				className="border-2 rounded border-theme-muted max-w-[1170px] mx-auto"
+				initial={{ opacity: 0, y: "5vh" }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.3 }}
+			/>
 
-			<section className="flex flex-col lg:flex-row gap-4 py-4 w-full lg:justify-between max-w-[1170px] lg:max-h-[244px] mx-auto">
+			<motion.section
+				className="flex flex-col lg:flex-row gap-4 py-4 w-full lg:justify-between max-w-[1170px] lg:max-h-[244px] mx-auto"
+				initial={{ opacity: 0, y: "5vh" }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5, delay: 0.75 }}>
 				<h2 className="font-bold text-xl text-theme-bold lg:hidden">Това са личните ми проекти</h2>
 
 				<ImagePanel
@@ -76,9 +94,7 @@ export default function HomePage() {
 						button: "nuchan.net",
 						github: "https://github.com/DaxXt3R/NUchan",
 					}}></ImagePanel>
-				<ImagePanel
-					
-					className={"lg:w-[340px] mx-4 lg:mx-0"}></ImagePanel>
+				<ImagePanel className={"lg:w-[340px] mx-4 lg:mx-0"}></ImagePanel>
 
 				<div className="flex-col flex lg:w-[470px]">
 					<h2 className="theme-h2 hidden lg:block">
@@ -95,7 +111,7 @@ export default function HomePage() {
 
 					<ButtonToPage href="/skills/projects">{["PROJECTS", "ПРОЕКТИ"][lang]}</ButtonToPage>
 				</div>
-			</section>
+			</motion.section>
 		</main>
 	);
 }
