@@ -18,6 +18,7 @@ export default function AboutMepage() {
 			if (event.deltaY > 0 && isAtBottom) {
 				/* scroll down */
 				navigate("/contacts");
+				window.scrollTo({ top: 0 });
 			}
 			if (event.deltaY < 0 && isAtTop) {
 				/* scroll up */

@@ -1,9 +1,8 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ButtonToPage from "./ButtonToPage";
 import { useDispatch, useSelector } from "react-redux";
 import { windowActions } from "../store/slices/window";
-import { useLocation } from "react-router";
 
 import Icon from "./Icon";
 
@@ -21,10 +20,11 @@ export default function ModalWindow() {
 	const lang = useSelector((state) => state.theme.lang);
 	const button = useSelector((state) => state.window.button);
 	const github = useSelector((state) => state.window.github);
+	const images = useSelector((state) => state.window.images);
 
 	// -------------------DRAGGING LOGIC-------------------
 	// const [position, setPosition] = useState({ x: window.innerWidth/6, y: window.innerHeight/4 });
-	const [position, setPosition] = useState({ x: 0, y: 0 });
+	const [position, setPosition] = useState({ x: 100, y: 250 });
 	const [dragging, setDragging] = useState(false);
 	const [offset, setOffset] = useState({ x: 0, y: 0 });
 
@@ -36,8 +36,8 @@ export default function ModalWindow() {
 			y: event.clientY - position.y,
 		});
 	}
-
 	function mouseMoveHandler(event) {
+		/* ability to move the */
 		if (!dragging) return;
 
 		const targetX = event.clientX - offset.x;
@@ -57,10 +57,11 @@ export default function ModalWindow() {
 			y: confinedY,
 		});
 	}
-
 	const mouseUpHandler = () => {
 		setDragging(false);
 	};
+
+	const [mainImage, setMainImage] = useState(images[0]);
 
 	// ----------------------------------------------------
 
@@ -71,26 +72,43 @@ export default function ModalWindow() {
 				"rounded-2xl absolute bg-theme-window transition-colors duration-700 p-8 lg:px-16 lg:py-12  z-30 gap-1 flex flex-col max-w-[1060px] drop-shadow-[4px_4px_6px_rgba(0,0,0,50%)] " +
 				`${dragging && "cursor-move select-none"}`
 			}
-			style={{ top: `${position.y}px`, left: `${position.x}px` }} //? this shit doesnt work with tailwind for some reason
-			onMouseDown={mouseDownHandler}
-			onMouseMove={mouseMoveHandler}
-			onMouseUp={mouseUpHandler}>
+			style={{ top: "20vh", left: "20vw" }} //? this shit doesnt work with tailwind for some reason
+			// onMouseDown={mouseDownHandler} onMouseMove={mouseMoveHandler} onMouseUp={mouseUpHandler}
+		>
 			<button
 				onClick={() => {
 					dispatch(windowActions.close());
 				}}
-				className="material-symbols-rounded text-[40px] absolute right-6 top-3 text-theme-text hover:text-theme-muted p-0 size-7">
+				className="material-symbols-rounded text-[40px] absolute right-6 top-4 text-theme-text hover:text-theme-accent duration-200 p-0 size-7">
 				disabled_by_default
 			</button>
-			<h5 className="theme-h1 duration-700">{heading}</h5>
+			<h5 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">{heading}</h5>
 			<hr className="decoration-2 border-[1px] border-theme-muted border-dashed duration-700" />
 			<div className="flex flex-col lg:flex-row lg:gap-6 gap-3 lg:pt-8 pt-2 h-full">
-				<div className=" lg:w-1/2 ">
-					<img
-						src="src/assets/nuchan panel.png"
-						alt=""
-						className="object-cover size-full rounded-lg border-2 border-theme-text"
-					/>
+				<div className=" lg:w-1/2 flex-col flex gap-2">
+					<div className="relative flex-1 min-h-[300px] overflow-hidden rounded-lg bg-theme-muted border-2 border-theme-text">
+						<img
+							src={mainImage}
+							alt=""
+							className="absolute top-1/2 left-1/2 w-full h-full object-contain transform -translate-x-1/2 -translate-y-1/2"
+							onClick={()=>{dispatch(windowActions.openImage(mainImage))}}
+						/>
+					</div>
+					<ul className="flex flex-row gap-2 overflow-x-scroll ">
+						{images.map((path, index) => {
+							return (
+								<img
+									src={path}
+									alt=""
+									className="h-14 object-contain bg-theme-muted rounded-lg border-[1px] border-theme-text grayscale cursor-pointer hover:border-theme-accent hover:grayscale-0 duration-500"
+									key={index}
+									onClick={() => {
+										setMainImage(path);
+									}}
+								/>
+							);
+						})}
+					</ul>
 				</div>
 				<div className="flex-1">
 					<p className="text-theme-text text-justify duration-700">{description[lang]}</p>

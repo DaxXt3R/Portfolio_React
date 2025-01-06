@@ -6,6 +6,8 @@ import { useLocation } from "react-router";
 import { Outlet } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import MaximizeImage from "../components/MaximizeImage.jsx";
+
 
 export default function RootPage() {
 	const windowOpen = useSelector((state) => state.window.isOpen);
@@ -22,6 +24,7 @@ export default function RootPage() {
 			<MainWrapper>
 				<TopNav></TopNav>
 				{windowOpen && <ModalWindow></ModalWindow>}
+				<MaximizeImage />
 				<Outlet></Outlet>
 			</MainWrapper>
 		</>

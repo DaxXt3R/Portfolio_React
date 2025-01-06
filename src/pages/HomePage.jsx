@@ -93,6 +93,16 @@ export default function HomePage() {
 						],
 						button: "nuchan.net",
 						github: "https://github.com/DaxXt3R/NUchan",
+						images: [
+							"/projects/nuchan panel.png",
+							"/projects/nuchan catalogue.png",
+							"/projects/nuchan post theming.jpg",
+							"/projects/nuchan Themes.png",
+							"/projects/nuchan posts prototyping.png",
+							"/projects/nuchan fullscreen.jpg",
+							"/projects/nuchan code 1.jpg",
+							"/projects/nuchan code 2.jpg",
+						],
 					}}></ImagePanel>
 				<ImagePanel className={"lg:w-[340px] mx-4 lg:mx-0"}></ImagePanel>
 

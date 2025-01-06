@@ -18,6 +18,7 @@ export default function SkillsPage() {
 
 			if (event.deltaY > 0 && isAtBottom) {
 				navigate("/aboutMe");
+				window.scrollTo({ top: 0 });
 			}
 			if (event.deltaY < 0 && isAtTop) {
 				navigate("/");
@@ -27,24 +28,22 @@ export default function SkillsPage() {
 		return () => window.removeEventListener("wheel", handleScroll);
 	}, [navigate]);
 
-	const MotionTechnologyBar = motion.create(TechnologyBar);
-
 	return (
 		<main className="px-4 my-auto flex flex-col lg:flex-row text-theme-text lg:gap-20 gap-14 justify-center">
 			<motion.section
 				id="leftSkills"
-				className=" flex flex-col flex-1 lg:max-w-[530px] relative gap-4"
+				className=" flex flex-col flex-1 lg:max-w-[530px] relative gap-4 justify-between"
 				initial={{ opacity: 0, y: "5vh" }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.5 }}>
 				<h1 className="theme-h1 text-center">{["Skills", "Умения"][lang]}</h1>
-				<ul className="flex-col gap-3 flex relative z-10">
-					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[-16px] left-14 ">
+				<ul className="flex-col flex relative z-10">
+					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[-7px] left-14 bg-theme-bg z-10">
 						Front-end
 					</li>
-					<MotionTechnologyBar
+					<TechnologyBar
 						icon="/technology logos/JavaScript-logo.png"
-						level={75}
+						level={60}
 						link={"https://developer.mozilla.org/en-US/docs/Web/JavaScript"}
 					/>
 					<TechnologyBar
@@ -55,12 +54,12 @@ export default function SkillsPage() {
 					<TechnologyBar
 						icon="/technology logos/Tailwind_CSS_Logo.svg.png"
 						link={"https://tailwindcss.com/"}
-						level={60}
+						level={75}
 					/>
 					<TechnologyBar
 						icon="/technology logos/React-icon.svg.png"
 						link={"https://react.dev/"}
-						level={50}
+						level={60}
 					/>
 					<TechnologyBar
 						icon="/technology logos/Adobe-Photoshop-Logo-2015-2019.png"
@@ -70,9 +69,9 @@ export default function SkillsPage() {
 					<TechnologyBar
 						icon="/technology logos/Figma-logo.svg.png"
 						link={"https://www.figma.com/"}
-						level={35}
+						level={50}
 					/>
-					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[250px] left-14 ">
+					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[280px] left-14 bg-theme-bg z-10">
 						Back-end
 					</li>
 					<TechnologyBar
@@ -93,9 +92,9 @@ export default function SkillsPage() {
 					<TechnologyBar
 						icon="/technology logos/Python-logo-notext.svg.png"
 						link={"https://www.python.org/"}
-						level={15}
+						level={25}
 					/>
-					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[425px] left-14 ">
+					<li className="font-bold text-xl text-theme-text italic text-center absolute top-[470px] left-14 bg-theme-bg z-10">
 						DevOps
 					</li>
 					<TechnologyBar
