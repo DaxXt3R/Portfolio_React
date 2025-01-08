@@ -61,3 +61,6 @@ body {
 .timeline-paragraph{
   @apply timeline-end timeline-box bg-theme-window shadow-md duration-500 text-theme-text
 }
+.bio-paragraph{
+  @apply gap-4 lg:px-20 items-center indent-6
+}

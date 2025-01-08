@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { windowActions } from "../store/slices/window";
 
 export default function ImagePanel({
-	src="/imageDefault.jpg",
+	src = "/imageDefault.jpg",
 	desc,
 	className,
 	openWindow,
 	clickable = false,
 	windowData = { heading: "", desc: "", github: "", images: [], button: "", link: "" },
+	canMaximize = false,
 }) {
 	const [hovered, setHovered] = useState(false);
 	const dispatch = useDispatch();
@@ -16,20 +17,27 @@ export default function ImagePanel({
 		if (clickable) {
 			dispatch(windowActions.open(windowData));
 		}
+		if (canMaximize){
+			dispatch(windowActions.openImage(src))
+		}
 	}
 
 	return (
 		<div
 			onClick={openWindow}
-			className={`${className} relative overflow-hidden flex-1 rounded-2xl border-2 border-theme-muted hover:border-theme-accent
-        ${clickable && " cursor-pointer"} flex flex-col`}
+			className={`${className} relative overflow-hidden flex-1  rounded-2xl border-2 border-theme-muted hover:border-theme-accent
+        ${(clickable || canMaximize) && " cursor-pointer"} flex flex-col`}
 			onMouseEnter={() => {
 				setHovered(true);
 			}}
 			onMouseLeave={() => {
 				setHovered(false);
 			}}>
-			<img src={src} alt="" className="grayscale hover:grayscale-0 duration-500 object-cover size-full bg-theme-text" />
+			<img
+				src={src}
+				alt=""
+				className="grayscale hover:grayscale-0 duration-500 object-cover size-full bg-theme-text"
+			/>
 			<div
 				id="label"
 				className={

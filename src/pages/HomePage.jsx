@@ -9,9 +9,11 @@ import { motion } from "motion/react";
 export default function HomePage() {
 	const lang = useSelector((state) => state.theme.lang);
 	const navigate = useNavigate();
+	const isMaximized = useSelector(state => state.window.isMaximized)
 
 	useEffect(() => {
 		function handleScroll(event) {
+			if (isMaximized) return		//disable scrolling if currently viewing a image fullscreen
 			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
 			if (event.deltaY > 0 && isAtBottom) {
 				navigate("/skills");
@@ -28,13 +30,13 @@ export default function HomePage() {
 				className="flex flex-col lg:flex-row text-theme-text max-w-[1170px] mx-auto mt-8"
 				initial={{ opacity: 0, y: "5vh" }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.3 }}>
+				transition={{ duration: 0.5 }}>
 				<div className="flex flex-col justify-between ">
 					<motion.div
 						className="flex flex-col gap-2 w-full"
 						initial={{ opacity: 0, y: "5vh" }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5, delay: 0.3 }}>
+						transition={{ duration: 0.5, delay: 0.25 }}>
 						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
 							{["Hello, my name is", "Здравейте, аз съм"][lang]}
 						</h1>
@@ -64,7 +66,7 @@ export default function HomePage() {
 				className="border-2 rounded border-theme-muted max-w-[1170px] mx-auto"
 				initial={{ opacity: 0, y: "5vh" }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.3 }}
+				transition={{ duration: 0.5 }}
 			/>
 
 			<motion.section

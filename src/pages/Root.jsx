@@ -10,7 +10,6 @@ import MaximizeImage from "../components/MaximizeImage.jsx";
 
 
 export default function RootPage() {
-	const windowOpen = useSelector((state) => state.window.isOpen);
 	const dispatch = useDispatch();
 
 	const location = useLocation();
@@ -23,8 +22,8 @@ export default function RootPage() {
 		<>
 			<MainWrapper>
 				<TopNav></TopNav>
-				{windowOpen && <ModalWindow></ModalWindow>}
 				<MaximizeImage />
+				<ModalWindow />
 				<Outlet></Outlet>
 			</MainWrapper>
 		</>

@@ -116,7 +116,7 @@ export default function SkillsPage() {
 				className=" flex flex-col flex-1 lg:max-w-[530px] gap-10"
 				initial={{ opacity: 0, y: "5vh" }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.5, delay: 0.3 }}>
+				transition={{ duration: 0.5, delay: 0.5 }}>
 				<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1 text-center">
 					{["My stack", "Моят стак"][lang]}
 				</h1>

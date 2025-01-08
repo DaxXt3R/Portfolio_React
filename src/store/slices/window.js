@@ -34,7 +34,6 @@ const windowSlice = createSlice({
 		openImage(state, action) {
 			state.isMaximized = true;
 			state.maximizedImage = action.payload;
-			console.log(state.isMaximized,"opened image ",state.maximizedImage);
 		},
 		closeImage(state) {
 			state.isMaximized = false;

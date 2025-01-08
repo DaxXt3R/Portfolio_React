@@ -1,15 +1,33 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router";
 import ImagePanel from "../components/ImagePanel";
+import { motion } from "motion/react";
 
 export default function ProjectsPage() {
 	const lang = useSelector((state) => state.theme.lang);
 
+	// animations
+	const imagePanelFadeIn = {
+		initial: { x: 200, opacity: 0 },
+		animate: { x: 0, opacity: 1 },
+	};
+
 	return (
 		<main className="px-4 flex flex-col text-theme-text gap-8 items-center max-w-[1170px] m-auto py-4">
-			<h1 className="theme-h1 w-full">{["Personal projects", "Лични проекти"][lang]}</h1>
+			<motion.h1
+				initial={{ x: "20vw", opacity: 0 }}
+				animate={{ x: 0, opacity: 1 }}
+				transition={{ duration: 0.5, type: "spring" }}
+				className="theme-h1 w-full">
+				{["Personal projects", "Лични проекти"][lang]}
+			</motion.h1>
 			<section>
-				<div className="lg:h-[400px] lg:px-20 flex flex-col h-[1200px] overflow-hidden lg:grid lg:grid-cols-3 gap-2 lg:grid-rows-2">
+				<motion.div
+					//? yeah this is not organized AT ALL, I cba
+					variants={imagePanelFadeIn}
+					initial="initial"
+					animate="animate"
+					transition={{ duration: 0.5, delay: 0.25, type: "spring" }}
+					className="lg:h-[400px] lg:px-20 flex flex-col h-[1200px] overflow-hidden lg:grid lg:grid-cols-3 gap-2 lg:grid-rows-2">
 					<ImagePanel
 						src={"/nuchan panel.png"}
 						clickable
@@ -44,7 +62,7 @@ export default function ProjectsPage() {
 					<ImagePanel />
 					<ImagePanel />
 					<ImagePanel />
-				</div>
+				</motion.div>
 			</section>
 		</main>
 	);
