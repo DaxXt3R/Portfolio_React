@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import ImagePanel from "../components/ImagePanel";
+import VideoPanel from "../components/VideoPanel";
+import BioSummaryRow from "../components/BioSummaryRow";
 
 export default function BiographyPage() {
 	const lang = useSelector((state) => state.theme.lang);
@@ -7,6 +9,48 @@ export default function BiographyPage() {
 	return (
 		<main className="px-4 gap-2 flex flex-col text-theme-text m-auto items-center max-w-[1170px] font-medium hyphens-auto pb-28">
 			<h1 className="theme-h1 lg:w-[1170px]">{["Biography", "Биография"][lang]}</h1>
+
+			<section className="flex w-full gap-4 justify-center my-32">
+				<ul className="w-[450px] flex flex-col">
+					<BioSummaryRow
+						heading={["name:", "име:"][lang]}
+						desc={["Diyan Nikolov", "Диян Николов"][lang]}
+					/>
+					<BioSummaryRow
+						heading={["fluent languanges:", "говорими езици:"][lang]}
+						desc={["English, Bulgarian", "Английски, Български"][lang]}
+					/>
+					<BioSummaryRow
+						heading={["education:", "проф. образование:"][lang]}
+						desc={["Masters in Architecture", "Архитектура - Магистър"][lang]}
+					/>
+					<BioSummaryRow
+						heading={["location:", "местоположение:"][lang]}
+						desc={["Sofia, Bulgaria", "гр.София, България"][lang]}
+					/>
+					<BioSummaryRow
+						heading={["hobbies:", "хобита:"][lang]}
+						desc={
+							[
+								"the gym, painting, crypto-trading, BMX, prototyping video-games",
+								"фитнес, рисуване, крипто-валути, BMX, прототипване на видео-игри",
+							][lang]
+						}
+						last
+					/>
+					<a
+						className="theme-button mt-4 ml-auto"
+						href="/biography/Diyan_Nikolov_CV.pdf"
+						download={"Diyan_Nikolov_CV.pdf"}>
+						{["DOWNLOAD CV", "ИЗТЕГЛИ CV"][lang]}
+					</a>
+				</ul>
+				<img
+					src="/biography/Party 1.jpg"
+					alt=""
+					className="float-left h-[370px] w-[400px]  object-cover object-top rounded-lg border-2 border-theme-text"
+				/>
+			</section>
 
 			{/*-------------------- В НАЧАЛОТО --------------------*/}
 			<section className="flex lg:flex-row flex-col gap-4 lg:px-20 items-center">
@@ -48,7 +92,7 @@ export default function BiographyPage() {
 						][lang]
 					}
 					canMaximize
-					className="float-right lg:w-[450px] lg:h-[520px] flex-none"
+					className="float-left lg:w-[450px] lg:h-[520px] flex-none"
 				/>
 			</section>
 
@@ -74,7 +118,7 @@ export default function BiographyPage() {
 			{/*-------------------- ЖИВОТЪТ В УНИ --------------------*/}
 			<section className="lg:px-20 indent-6 text-justify hyphens-auto">
 				<ImagePanel
-					className="lg:w-[350px] lg:h-[550px] float-left m-4"
+					className="lg:w-[350px] lg:h-[550px] float-left m-4 ml-0"
 					src="/biography/gallery_9.png"
 					canMaximize
 					desc={
@@ -112,12 +156,12 @@ export default function BiographyPage() {
 					}
 				</p>
 			</section>
-			
-			{/*-------------------- ПРОГРАМИРАНЕ КАТО СТРАСТ --------------------*/}
+
+			{/*-------------------- ПРОГРАМИРАНЕ КАТО ХОБИ --------------------*/}
 
 			<section className="lg:px-20 indent-6 text-justify hyphens-auto">
 				<ImagePanel
-					className="lg:h-[250px] lg:w-[360px] float-right ml-4 mt-4"
+					className="lg:h-[270px] lg:w-[360px] float-right ml-4 mt-4"
 					src="/biography/Screenshot 2025-01-02 133824.png"
 					canMaximize
 					desc={
@@ -127,7 +171,9 @@ export default function BiographyPage() {
 						][lang]
 					}
 				/>
-				<h2 className="theme-h2 indent-0 my-2 text-right">Програмиране като хоби</h2>
+				<h2 className="theme-h2 indent-0 my-2 text-right">
+					{["Programming as a hobby", "Програмиране като хоби"][lang]}
+				</h2>
 				<p>
 					{
 						[
@@ -144,16 +190,12 @@ export default function BiographyPage() {
 						][lang]
 					}
 				</p>
-				<ImagePanel
-					className="lg:h-[250px] lg:w-[360px] float-left mr-4 mt-4"
-					src="/biography/Screenshot 2025-01-02 133824.png"
+				{/* <video src="/biography/Untitled.mp4" className="w-[400px] float-left" muted autoPlay loop></video> */}
+				<VideoPanel
+					className="w-[400px] h-[310px] float-left mr-4 mt-4"
 					canMaximize
-					desc={
-						[
-							"Making custom graphs and automated trading on cryptocurrencies",
-							"Университет по Архитектура, Строителство и Геодезия - София",
-						][lang]
-					}
+					src="/biography/videoGame prototype.mp4"
+					desc={"2d Sidescroller prototyping - made with Godot"}
 				/>
 				<p className="mt-4">
 					{
@@ -175,6 +217,80 @@ export default function BiographyPage() {
 
 			{/*-------------------- ПРОГРАМИРАНЕ КАТО СТРАСТ --------------------*/}
 
+			<section className="lg:px-20 indent-6 text-justify hyphens-auto">
+				<ImagePanel
+					className="lg:h-[360px] float-right m-4 mr-0 "
+					src="/biography/udemy-WebDeveloper bootcamp.jpg"
+					canMaximize
+					desc={"Web Developer Bootcamp by Colt Steele"}
+				/>
+				<h2 className="theme-h2 indent-0 my-2 text-right">
+					{["Programming as a passion", "Програмиране като страст"][lang]}
+				</h2>
+
+				<p>
+					{
+						[
+							"After graduating, I faced the job market, where I discovered that no one was looking for inexperienced young people with no professional reputation. After months spent in low-paying jobs, I found an enthusiastic startup studio called MYX Robotics. They hired me for the construction team, where I worked on planning sites for telecommunications towers. ",
+							"След дипломиране, се сблъсках с пазара на труда – където открих че никой не търси неопитни, млади хора с нулева професионална репутация. След месеци, прекарани в нископлатени работи, намерих ентусиазирано стартъп студио, наречено MYX Robotics. Наеха ме в строителния екип, където работех върху планирането на обекти за телекомуникационни кули.",
+						][lang]
+					}
+				</p>
+				<p>
+					{
+						[
+							"The first years were intense. I had problems with rent, my car, and working in a team, but over time things fell into place. Gradually, I became more efficient – tasks that initially took me a week now I completed in 1-2 days. This freed up time, which I used to deepen my programming skills through courses like The Web Developer Bootcamp, The Git & Github Bootcamp, and React – The Complete Guide 2024.",
+							"Първите години бяха напрегнати. Имах проблеми с наема, колата и работата в екип, но с времето нещата се наредиха. Постепенно станах по-ефективен – задачи, които ми отнемаха седмица в началото, сега завършвах за 1-2 дни. Това ми освободи време, което използвах, за да задълбоча уменията си в програмирането чрез курсове като The Web Developer Bootcamp, The Git & Github Bootcamp и React – The Complete Guide 2024.",
+						][lang]
+					}
+				</p>
+			</section>
+
+			{/*-------------------- НОВО НАЧАЛО --------------------*/}
+
+			<section className="lg:px-20 indent-6 text-justify hyphens-auto">
+				<ImagePanel
+					className="lg:h-[360px] float-left m-4 ml-0 "
+					src="/biography/udemy-React.jpg"
+					canMaximize
+					desc={"React-The complete guide by Maximilian Schwarzmuller"}
+				/>
+				<h2 className="theme-h2 indent-0 my-2 text-left">
+					{["A new beginning", "Ново начало"][lang]}
+				</h2>
+				<p>
+					{
+						[
+							"Two months ago, I was laid off from my job. My bosses couldn't secure enough projects to keep the team, so they had to let many of us go. It was a tough moment, but not entirely unexpected. The construction sector can be unpredictable, and I was already starting to feel that architecture wasn't where my future lay. Instead of seeing it as a failure, I saw it as an opportunity – a chance to finally make the big move I had been preparing for.",
+							"Преди два месеца ме съкратиха от работа. Шефовете ми не успяха да осигурят достатъчно проекти, за да поддържат екипа, и се наложи да освободят много от нас. Това беше труден момент, но не беше напълно неочакван. Строителният сектор може да бъде непредсказуем, а аз вече започвах да усещам, че архитектурата не е мястото, където лежи моето бъдеще. Вместо да го възприема като провал, го видях като възможност – шанс най-накрая да направя голямата стъпка, за която се подготвях.",
+						][lang]
+					}
+				</p>
+				<p>
+					{
+						[
+							"I decided to completely abandon architecture and dedicate myself to a career in software development. Over the years, I discovered a real passion for programming and knew that with the right mindset, I could turn this passion into a profession. I'm not naive – I know I don't have enough years of experience to get a high salary or have big demands. But I don't care. I'm ready to start from scratch and prove myself.",
+							"Реших напълно да изоставя архитектурата и да се посветя на кариера в софтуерната разработка. През годините открих истинска страст към програмирането и знаех, че с правилното мислене мога да превърна тази страст в професия. Не съм наивен – знам, че нямам достатъчно години опит, за да получа висока заплата или да имам големи изисквания. Но не ми пука. Готов съм да започна от нулата и да се докажа.",
+						][lang]
+					}
+				</p>
+				<p>
+					{
+						[
+							"After all, I've come this far entirely on my own. Every skill I've learned, every problem I've solved, and every achievement I've marked are the result of my own curiosity, determination, and desire for growth. I taught myself to program when I didn't even know where to start. I navigated the confusing world of frameworks and technologies, often feeling lost, but I never gave up. And I know I can keep going, regardless of whether others believe in me or not.",
+							"В крайна сметка стигнах дотук напълно сам. Всяко умение, което съм научил, всеки проблем, който съм решил, и всяко постижение, което съм отбелязал, са резултат от моето собствено любопитство, решителност и желание за развитие. Научих се да програмирам, когато дори не знаех откъде да започна. Преодолявах объркания свят на фреймуъркове и технологии, често се чувствах изгубен, но никога не се отказвах. И знам, че мога да продължа, независимо дали другите вярват в мен или не.",
+						][lang]
+					}
+				</p>
+				<p>
+					{
+						[
+							"This is just the beginning. I'm ready to enter the world of software development, face the challenges, and keep improving every day. It doesn't matter where I'll start or how small the job may be – what matters is where I'm headed. And I know exactly where I'm going.",
+							"Това е само началото. Готов съм да навляза в света на софтуерната разработка, да се изправя пред предизвикателствата и да продължавам да се подобрявам всеки ден. Няма значение откъде ще започна или колко малка може да бъде работата – това, което има значение, е накъде съм се запътил. А аз знам точно къде отивам.",
+						][lang]
+					}
+				</p>
+			</section>
 		</main>
 	);
 }

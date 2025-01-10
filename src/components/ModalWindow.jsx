@@ -26,42 +26,10 @@ export default function ModalWindow() {
 
 	// -------------------DRAGGING LOGIC-------------------
 	// const [position, setPosition] = useState({ x: window.innerWidth/6, y: window.innerHeight/4 });
-	const [position, setPosition] = useState({ x: 100, y: 250 });
-	const [dragging, setDragging] = useState(false);
-	const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-	function mouseDownHandler(event) {
-		if (event.target !== event.currentTarget) return; //By checking e.target !== e.currentTarget, we ensure that dragging only starts when clicking on the parent div's padding, not the inner content.
-		setDragging(true);
-		setOffset({
-			x: event.clientX - position.x,
-			y: event.clientY - position.y,
-		});
-	}
-	function mouseMoveHandler(event) {
-		/* ability to move the */
-		if (!dragging) return;
-
-		const targetX = event.clientX - offset.x;
-		const targetY = event.clientY - offset.y;
-		// Get window dimensions
-		const windowWidth = window.innerWidth;
-		const windowHeight = window.innerHeight;
-		// Get element's dimensions
-		const elementWidth = event.currentTarget.offsetWidth;
-		const elementHeight = event.currentTarget.offsetHeight;
-		//
-		const confinedX = Math.max(0, Math.min(targetX, windowWidth - elementWidth));
-		const confinedY = Math.max(0, Math.min(targetY, windowHeight - elementHeight));
-
-		setPosition({
-			x: confinedX,
-			y: confinedY,
-		});
-	}
-	const mouseUpHandler = () => {
-		setDragging(false);
-	};
+	const [position, setPosition] = useState({
+		x: (window.innerWidth - 1060) / 2,
+		y: (window.innerHeight - 600) / 2,
+	});
 
 	const [mainImage, setMainImage] = useState(images[0]);
 
@@ -75,10 +43,9 @@ export default function ModalWindow() {
 					exit={{ opacity: 0, y: -200, transition: { duration: 0.1 } }}
 					id="ModalWindow"
 					className={
-						"rounded-2xl absolute bg-theme-window transition-colors duration-700 p-8 lg:px-16 lg:py-12  z-10 gap-1 flex flex-col max-w-[1060px] drop-shadow-[4px_4px_6px_rgba(0,0,0,50%)] " +
-						`${dragging && "cursor-move select-none"}`
+						"rounded-2xl absolute bg-theme-window transition-colors duration-700 p-8 lg:px-16 lg:py-12  z-10 gap-1 flex flex-col max-w-[1060px] drop-shadow-[4px_4px_6px_rgba(0,0,0,50%)] "
 					}
-					style={{ top: "20vh", left: "20vw" }} //? this shit doesnt work with tailwind for some reason
+					style={{ top: `${position.y}px`, left: `${position.x}px` }} //? this shit doesnt work with tailwind for some reason
 					// onMouseDown={mouseDownHandler} onMouseMove={mouseMoveHandler} onMouseUp={mouseUpHandler}
 				>
 					<button

@@ -5,15 +5,16 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { motion } from "motion/react";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 export default function HomePage() {
 	const lang = useSelector((state) => state.theme.lang);
 	const navigate = useNavigate();
-	const isMaximized = useSelector(state => state.window.isMaximized)
+	const isMaximized = useSelector((state) => state.window.isMaximized);
 
 	useEffect(() => {
 		function handleScroll(event) {
-			if (isMaximized) return		//disable scrolling if currently viewing a image fullscreen
+			if (isMaximized) return; //disable scrolling if currently viewing a image fullscreen
 			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
 			if (event.deltaY > 0 && isAtBottom) {
 				navigate("/skills");
@@ -23,6 +24,29 @@ export default function HomePage() {
 		window.addEventListener("wheel", handleScroll);
 		return () => window.removeEventListener("wheel", handleScroll);
 	}, [navigate]);
+
+	const [typeWriter] = useTypewriter({
+		words: [
+			[
+				"Fullstack applications.",
+				"Custom websites.",
+				"React UI components.",
+				"Mobile games.",
+				"Back-end solutions.",
+			],
+			[
+				"Fullstack приложения.",
+				"Поръчкови уебсайтове.",
+				"React UI компоненти.",
+				"Мобилни видео игри.",
+				"Back-end решения.",
+			]
+		][lang],
+		loop: false,
+		delaySpeed: 3000,
+		typeSpeed:100,
+		deleteSpeed:40
+	});
 
 	return (
 		<main className="px-4 my-auto ">
@@ -43,9 +67,10 @@ export default function HomePage() {
 						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
 							{["Diyan and I develop", "Диян и програмирам"][lang]}
 						</h1>
-						<h1 className="text-theme-accent text-3xl lg:text-6xl font-bold animateH1 ">
-							{["Back-end solutions", "Back-end решения"][lang]}
-						</h1>
+						<h3 className="text-theme-accent text-3xl lg:text-6xl font-bold animateH1">
+							{typeWriter}
+							<Cursor cursorColor="red" />
+						</h3>
 						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
 							{["For you.", "За вас."][lang]}
 						</h1>

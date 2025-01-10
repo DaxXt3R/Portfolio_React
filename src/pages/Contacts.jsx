@@ -38,6 +38,16 @@ export default function ContactsPage() {
 		setFormFrom("");
 		setFormMessage("");
 		console.log("Sending E-mail...");
+		emailjs
+			.sendForm("service_ho42coy", "template_n4pt2fv", event.target, {
+				publicKey: "m52nngA1Eu0JrKt3o",
+			})
+			.then(() => {
+				console.log("Successfully sent E-mail!"),
+					(error) => {
+						console.log("Failed to send E-mail", error);
+					};
+			});
 	}
 
 	const enterDefault = {
@@ -57,18 +67,18 @@ export default function ContactsPage() {
 				{["Let's work together!", "Нека работим заедно!"][lang]}
 			</motion.h1>
 			<motion.section
-				className="flex flex-col justify-between w-full max-w-[700px]"
+				className="flex flex-row justify-between items-center w-full max-w-[700px] text-xl"
 				variants={enterDefault}
 				initial={"initial"}
 				animate="animate"
 				transition={{ duration: 0.5, delay: 0.25 }}>
-				<p className="flex items-baseline gap-2">
+				<p className="flex items-baseline gap-2 ">
 					<label className="font-bold">E-mail:</label>
-					<span>deennikolov@gmail.com</span>
+					<a className="hover:text-theme-accent hover:underline cursor-pointer duration-200" href="mailto:deennikolov@gmail.com">deennikolov@gmail.com</a>
 				</p>
 				<p className="flex items-baseline gap-2">
 					<label className="font-bold">{["Mobile:", "Тел:"][lang]}</label>
-					<span>0882 333 541</span>
+					<a className="hover:text-theme-accent hover:underline cursor-pointer duration-200" href="tel:+359882333541">0882 333 541</a>
 				</p>
 			</motion.section>
 
@@ -89,11 +99,12 @@ export default function ContactsPage() {
 					}
 				</h3>
 				<label
-					htmlFor="formMessage"
+					htmlFor="formFrom"
 					className="input input-bordered flex items-center gap-2 bg-transparent p-2 border-theme-text col-span-2 lg:col-span-1">
 					{["From:", "Подател:"][lang]}
 					<input
-						id="formMessage"
+						id="formFrom"
+						name="formFrom"
 						type="text"
 						className="grow"
 						value={formFrom}
@@ -108,6 +119,7 @@ export default function ContactsPage() {
 					E-mail:
 					<input
 						id="formEmail"
+						name="formEmail"
 						type="text"
 						className="grow"
 						value={formEmail}
@@ -117,13 +129,14 @@ export default function ContactsPage() {
 					/>
 				</label>
 				<textarea
+					name="formMessage"
 					onChange={(e) => {
 						setFormMessage(e.target.value);
 					}}
 					className="textarea bg-transparent border-[1px] border-theme-text max-h-[500px] col-span-2 text-base h-[200px] p-2"
 					placeholder={["Message", "Съобщение:"][lang]}
 					value={formMessage}></textarea>
-				<button className="font-medium bg-theme-window rounded-lg h-10 btn border-none text-theme-text hover:bg-theme-accent hover:text-white text-lg col-start-2 w-fit justify-self-end px-10">
+				<button className="theme-button">
 					SEND
 				</button>
 			</motion.form>

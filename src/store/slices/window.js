@@ -38,6 +38,9 @@ const windowSlice = createSlice({
 		closeImage(state) {
 			state.isMaximized = false;
 		},
+		videoScene(state, action){
+			state.isMaximized = false;
+		},
 	},
 });
 

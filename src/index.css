@@ -64,3 +64,6 @@ body {
 .bio-paragraph{
   @apply gap-4 lg:px-20 items-center indent-6
 }
+.theme-button{
+  @apply font-medium bg-theme-window rounded-lg h-10 btn border-none text-theme-text hover:bg-theme-accent hover:text-white text-lg col-start-2 w-fit justify-self-end px-10
+}
