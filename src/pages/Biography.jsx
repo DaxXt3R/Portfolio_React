@@ -10,8 +10,13 @@ export default function BiographyPage() {
 		<main className="px-4 gap-2 flex flex-col text-theme-text m-auto items-center max-w-[1170px] font-medium hyphens-auto pb-28">
 			<h1 className="theme-h1 lg:w-[1170px]">{["Biography", "Биография"][lang]}</h1>
 
-			<section className="flex w-full gap-4 justify-center my-32">
-				<ul className="w-[450px] flex flex-col">
+			<section className="flex lg:flex-row flex-col w-full gap-4 justify-center lg:my-32 mb-12">
+				<img
+					src="/biography/Party 1.jpg"
+					alt=""
+					className="float-left h-[370px] lg:w-[400px]  object-cover object-top rounded-lg border-2 border-theme-text"
+				/>
+				<ul className="lg:w-[450px] flex flex-col">
 					<BioSummaryRow
 						heading={["name:", "име:"][lang]}
 						desc={["Diyan Nikolov", "Диян Николов"][lang]}
@@ -39,17 +44,12 @@ export default function BiographyPage() {
 						last
 					/>
 					<a
-						className="theme-button mt-4 ml-auto"
+						className="theme-button mt-4 mx-auto lg:mx-0"
 						href="/biography/Diyan_Nikolov_CV.pdf"
 						download={"Diyan_Nikolov_CV.pdf"}>
 						{["DOWNLOAD CV", "ИЗТЕГЛИ CV"][lang]}
 					</a>
 				</ul>
-				<img
-					src="/biography/Party 1.jpg"
-					alt=""
-					className="float-left h-[370px] w-[400px]  object-cover object-top rounded-lg border-2 border-theme-text"
-				/>
 			</section>
 
 			{/*-------------------- В НАЧАЛОТО --------------------*/}
@@ -118,7 +118,7 @@ export default function BiographyPage() {
 			{/*-------------------- ЖИВОТЪТ В УНИ --------------------*/}
 			<section className="lg:px-20 indent-6 text-justify hyphens-auto">
 				<ImagePanel
-					className="lg:w-[350px] lg:h-[550px] float-left m-4 ml-0"
+					className="lg:w-[350px] lg:h-[550px] w-full float-left m-4 ml-0"
 					src="/biography/gallery_9.png"
 					canMaximize
 					desc={
@@ -192,7 +192,7 @@ export default function BiographyPage() {
 				</p>
 				{/* <video src="/biography/Untitled.mp4" className="w-[400px] float-left" muted autoPlay loop></video> */}
 				<VideoPanel
-					className="w-[400px] h-[310px] float-left mr-4 mt-4"
+					className="lg:w-[400px] w-full h-[310px] float-left mr-4 mt-4 "
 					canMaximize
 					src="/biography/videoGame prototype.mp4"
 					desc={"2d Sidescroller prototyping - made with Godot"}
@@ -219,7 +219,7 @@ export default function BiographyPage() {
 
 			<section className="lg:px-20 indent-6 text-justify hyphens-auto">
 				<ImagePanel
-					className="lg:h-[360px] float-right m-4 mr-0 "
+					className="lg:h-[360px] float-right m-4 mr-0 lg:w-fit w-full"
 					src="/biography/udemy-WebDeveloper bootcamp.jpg"
 					canMaximize
 					desc={"Web Developer Bootcamp by Colt Steele"}
@@ -250,7 +250,7 @@ export default function BiographyPage() {
 
 			<section className="lg:px-20 indent-6 text-justify hyphens-auto">
 				<ImagePanel
-					className="lg:h-[360px] float-left m-4 ml-0 "
+					className="lg:h-[360px] float-left m-4 ml-0 lg:w-fit w-full"
 					src="/biography/udemy-React.jpg"
 					canMaximize
 					desc={"React-The complete guide by Maximilian Schwarzmuller"}

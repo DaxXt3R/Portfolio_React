@@ -9,6 +9,7 @@ export default function MaximizeImage() {
 	const isMaximized = useSelector((state) => state.window.isMaximized);
 	const dispatch = useDispatch();
 	const [imageZoom, setImageZoom] = useState(1);
+	const [video, setVideo] = useState(false);
 
 	function handleImageZoom(e) {
 		if (e.deltaY > 0) {

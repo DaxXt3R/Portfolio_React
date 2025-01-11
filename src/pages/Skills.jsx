@@ -4,12 +4,30 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { motion } from "motion/react";
-
+import { useSwipeable } from "react-swipeable";
 // {["english","bulgarian"][lang]}
 
 export default function SkillsPage() {
 	const lang = useSelector((state) => state.theme.lang);
 	const navigate = useNavigate();
+
+	const handleSwipes = useSwipeable({
+		onSwipedUp: () => {
+			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+			if (isAtBottom) {
+				navigate("/aboutMe");
+				window.scrollTo({ top: 0 });
+			}
+		},
+		onSwipedDown: () => {
+			const isAtTop = window.scrollY == 0;
+			if (isAtTop) {
+				navigate("/");
+			}
+		},
+		preventDefaultTouchmoveEvent: true,
+		trackMouse: true,
+	});
 
 	useEffect(() => {
 		function handleScroll(event) {
@@ -29,7 +47,9 @@ export default function SkillsPage() {
 	}, [navigate]);
 
 	return (
-		<main className="px-4 my-auto flex flex-col lg:flex-row text-theme-text lg:gap-20 gap-14 justify-center">
+		<main
+			className="px-4 my-auto flex flex-col lg:flex-row text-theme-text lg:gap-20 gap-14 justify-center"
+			{...handleSwipes}>
 			<motion.section
 				id="leftSkills"
 				className=" flex flex-col flex-1 lg:max-w-[530px] relative gap-4 justify-between"
@@ -130,11 +150,7 @@ export default function SkillsPage() {
 						<h5 className="font-bold lg:text-xl text-[#60DAFB] drop-shadow-md">REACT</h5>
 					</div>
 					<div className="flex flex-col w-20 h-full items-center ">
-						<img
-							src="public/technology logos/next-js.svg"
-							className="my-auto drop-shadow-2"
-							alt=""
-						/>
+						<img src="/technology logos/next-js.svg" className="my-auto drop-shadow-2" alt="" />
 						<h5 className="font-bold lg:text-xl text-black drop-shadow-md">NEXT</h5>
 					</div>
 					<div className="flex flex-col w-20 h-full items-center justify-between">
@@ -205,11 +221,11 @@ export default function SkillsPage() {
 						<h2 className="theme-h2 h-8 overflow-hidden">
 							{["In the future I will", "В бъдещето ще"][lang]}
 						</h2>
-						<p className="theme-p">
+						<p className="theme-p hyphens-auto">
 							{
 								[
-									"learn more about SQL databases like PostgreSQL since they are the industry-standart. I will explore Linux, Monit, Github, Docker, Kubernetes. I also have a strong interest for Python and Django, since at the start of my coding journey I was tinkering with video-game program-ming in Python. I would really like to become an experienced video-game developer.",
-									"науча повече за SQL бази данни като PostgreSQL тъй като са индустриален стан-дарт. Ще разгледам инстру-менти като Linux, Monit, GitHub, Docker, Kubernetes. Също така имам силен интерес към ученето на Python, може би със Django, тъй като в началото програ-мирах игри с Python, много да стана опитен разработчик на видео игри.",
+									"learn more about SQL databases like PostgreSQL since they are the industry standart. I will explore Linux, Monit, Github, Docker, Kubernetes. I would like, at some point to learn Python and Django. I am also very interested in React Native because It will give me the ability to publish my apps on a wide range of platforms, whether it be Desktop, Mobile or the web.",
+									"науча повече за SQL бази данни като PostgreSQL тъй като са индустриален стандарт. Ще разгледам инструменти като Linux, Monit, GitHub, Docker, Kubernetes. Също така имам силен интерес към ученето на Python, може би със Django. Също така искам да науча React Native за да мога да произвеждам приложе-ния за всички потребители, дали било на PC, Mac, Mobile или уеб браузъра.",
 								][lang]
 							}
 						</p>

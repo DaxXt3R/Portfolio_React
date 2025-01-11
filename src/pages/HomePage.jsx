@@ -6,11 +6,28 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { motion } from "motion/react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { useSwipeable } from "react-swipeable";
 
 export default function HomePage() {
 	const lang = useSelector((state) => state.theme.lang);
 	const navigate = useNavigate();
 	const isMaximized = useSelector((state) => state.window.isMaximized);
+
+
+
+	const handleSwipes = useSwipeable({
+		onSwipedUp: () => {
+			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+			if (isAtBottom) {
+				navigate("/skills");
+				window.scrollTo({ top: 0 });
+			}
+		},
+		preventDefaultTouchmoveEvent: true,
+		trackMouse: true,
+	});
+
+
 
 	useEffect(() => {
 		function handleScroll(event) {
@@ -23,6 +40,8 @@ export default function HomePage() {
 		}
 		window.addEventListener("wheel", handleScroll);
 		return () => window.removeEventListener("wheel", handleScroll);
+
+		
 	}, [navigate]);
 
 	const [typeWriter] = useTypewriter({
@@ -49,7 +68,7 @@ export default function HomePage() {
 	});
 
 	return (
-		<main className="px-4 my-auto ">
+		<main className="px-4 my-auto " {...handleSwipes}>
 			<motion.section
 				className="flex flex-col lg:flex-row text-theme-text max-w-[1170px] mx-auto mt-8"
 				initial={{ opacity: 0, y: "5vh" }}
@@ -79,7 +98,7 @@ export default function HomePage() {
 				</div>
 
 				<img
-					src="src/assets/red-dayCOVER 1.png"
+					src="/red-dayCOVER 1.png"
 					alt=""
 					className="object-contain h-[430px] lg:h-[530px] mr-4 lg:ml-auto drop-shadow-1 mt-10 lg:mt-0"
 				/>
@@ -102,7 +121,7 @@ export default function HomePage() {
 				<h2 className="font-bold text-xl text-theme-bold lg:hidden">Това са личните ми проекти</h2>
 
 				<ImagePanel
-					src={"src/assets/nuchan panel.png"}
+					src={"/projects/nuchan panel.png"}
 					className={"lg:w-[340px] mx-4 lg:mx-0"}
 					clickable
 					// desc={"NUchan е козметичен ъпдейт на 4chan.org с добавени функции"}
@@ -124,7 +143,7 @@ export default function HomePage() {
 							"/projects/nuchan panel.png",
 							"/projects/nuchan catalogue.png",
 							"/projects/nuchan post theming.jpg",
-							"/projects/nuchan Themes.png",
+							"/projects/nuchan Themes.jpg",
 							"/projects/nuchan posts prototyping.png",
 							"/projects/nuchan fullscreen.jpg",
 							"/projects/nuchan code 1.jpg",

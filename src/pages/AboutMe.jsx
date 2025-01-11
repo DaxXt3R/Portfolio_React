@@ -4,12 +4,32 @@ import { useNavigate } from "react-router";
 import HistoryTimeline from "../components/HistoryTimeline";
 import ButtonToPage from "../components/ButtonToPage";
 import { motion } from "motion/react";
+import { useSwipeable } from "react-swipeable";
+
 
 export default function AboutMepage() {
 	const lang = useSelector((state) => state.theme.lang);
-
 	const navigate = useNavigate();
+	
+	const handleSwipes = useSwipeable({
+		onSwipedUp: () => {
+			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+			if (isAtBottom) {
+				navigate("/contacts");
+				window.scrollTo({ top: 0 });
+			}
+		},
+		onSwipedDown: () => {
+			const isAtTop = window.scrollY == 0;
+			if (isAtTop) {
+				navigate("/skills");
+			}
+		},
+		preventDefaultTouchmoveEvent: true,
+		trackMouse: true,
+	});
 
+	
 	useEffect(() => {
 		function handleScroll(event) {
 			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
@@ -30,7 +50,7 @@ export default function AboutMepage() {
 	}, [navigate]);
 
 	return (
-		<main className="px-4 flex flex-col text-theme-text items-center max-w-[1170px] my-auto mx-auto gap-4">
+		<main className="px-4 flex flex-col text-theme-text items-center max-w-[1170px] my-auto mx-auto gap-4" {...handleSwipes}>
 			<motion.section
 				className=" mb-10 w-full"
 				initial={{ opacity: 0, y: "5vh" }}
@@ -143,7 +163,7 @@ export default function AboutMepage() {
 						<span
 							className="timeline-icon material-symbols-rounded"
 							style={{ fontVariationSettings: "'FILL' 1" }}>
-							sentiment_dissatisfied
+							heart_broken
 						</span>
 						<p className="timeline-paragraph">
 							{" "}
@@ -186,7 +206,7 @@ export default function AboutMepage() {
 					<h1 className="theme-h1">{["Upbringing", "Произход"][lang]}</h1>
 					<div className="w-full  flex lg:flex-row flex-col gap-4">
 						<img
-							src="public/biography/gallery_9.png"
+							src="/biography/gallery_9.png"
 							alt=""
 							className="lg:w-2/5 lg:object-cover object-contain h-[350px] rounded-lg bg-theme-muted border-[1px] border-theme-text shadow-1"
 						/>
@@ -206,7 +226,7 @@ export default function AboutMepage() {
 					<h1 className="theme-h1 text-start">{["Education", "Обучение"][lang]}</h1>
 					<div className="flex gap-4 w-full mb-4 flex-col lg:flex-row">
 						<img
-							src="public/biography/Screenshot 2025-01-01 021622.png"
+							src="/biography/Screenshot 2025-01-01 021622.png"
 							alt=""
 							className="lg:w-2/5 object-contain h-[350px] rounded-lg border-[1px] border-theme-text shadow-1 bg-white"
 						/>

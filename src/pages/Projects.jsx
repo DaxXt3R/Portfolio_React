@@ -49,7 +49,7 @@ export default function ProjectsPage() {
 								"/projects/nuchan panel.png",
 								"/projects/nuchan catalogue.png",
 								"/projects/nuchan post theming.jpg",
-								"/projects/nuchan Themes.png",
+								"/projects/nuchan Themes.jpg",
 								"/projects/nuchan posts prototyping.png",
 								"/projects/nuchan fullscreen.jpg",
 								"/projects/nuchan code 1.jpg",
