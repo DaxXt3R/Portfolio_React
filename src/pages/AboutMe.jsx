@@ -12,17 +12,20 @@ export default function AboutMepage() {
 	const navigate = useNavigate();
 	
 	const handleSwipes = useSwipeable({
-		onSwipedUp: () => {
-			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
-			if (isAtBottom) {
-				navigate("/contacts");
-				window.scrollTo({ top: 0 });
-			}
-		},
+
 		onSwipedDown: () => {
 			const isAtTop = window.scrollY == 0;
 			if (isAtTop) {
 				navigate("/skills");
+			}
+		},
+		onSwipedUp: () => {
+			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight-2;
+			console.log(isAtBottom);
+			
+			if (isAtBottom) {
+				navigate("/contacts");
+				window.scrollTo({ top: 0 });
 			}
 		},
 		preventDefaultTouchmoveEvent: true,

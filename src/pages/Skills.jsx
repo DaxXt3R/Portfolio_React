@@ -13,7 +13,7 @@ export default function SkillsPage() {
 
 	const handleSwipes = useSwipeable({
 		onSwipedUp: () => {
-			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight-2;
 			if (isAtBottom) {
 				navigate("/aboutMe");
 				window.scrollTo({ top: 0 });

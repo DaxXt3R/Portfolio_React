@@ -13,11 +13,10 @@ export default function HomePage() {
 	const navigate = useNavigate();
 	const isMaximized = useSelector((state) => state.window.isMaximized);
 
-
-
 	const handleSwipes = useSwipeable({
 		onSwipedUp: () => {
-			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+			// theres some shitty rounding problem on mobile so subtract 2px to make it work
+			const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
 			if (isAtBottom) {
 				navigate("/skills");
 				window.scrollTo({ top: 0 });
@@ -26,8 +25,6 @@ export default function HomePage() {
 		preventDefaultTouchmoveEvent: true,
 		trackMouse: true,
 	});
-
-
 
 	useEffect(() => {
 		function handleScroll(event) {
@@ -40,8 +37,6 @@ export default function HomePage() {
 		}
 		window.addEventListener("wheel", handleScroll);
 		return () => window.removeEventListener("wheel", handleScroll);
-
-		
 	}, [navigate]);
 
 	const [typeWriter] = useTypewriter({
@@ -49,22 +44,22 @@ export default function HomePage() {
 			[
 				"Fullstack applications.",
 				"Custom websites.",
-				"React UI components.",
+				"React UI/UX.",
 				"Mobile games.",
 				"Back-end solutions.",
 			],
 			[
 				"Fullstack приложения.",
 				"Поръчкови уебсайтове.",
-				"React UI компоненти.",
-				"Мобилни видео игри.",
+				"React UI/UX.",
+				"Мобилни игри.",
 				"Back-end решения.",
-			]
+			],
 		][lang],
 		loop: false,
 		delaySpeed: 3000,
-		typeSpeed:100,
-		deleteSpeed:40
+		typeSpeed: 100,
+		deleteSpeed: 40,
 	});
 
 	return (
@@ -88,7 +83,7 @@ export default function HomePage() {
 						</h1>
 						<h3 className="text-theme-accent text-3xl lg:text-6xl font-bold animateH1">
 							{typeWriter}
-							<Cursor cursorColor="red" />
+							<Cursor cursorColor="var(--accent)" />
 						</h3>
 						<h1 className="text-theme-bold text-3xl lg:text-6xl font-bold animateH1">
 							{["For you.", "За вас."][lang]}
@@ -150,7 +145,36 @@ export default function HomePage() {
 							"/projects/nuchan code 2.jpg",
 						],
 					}}></ImagePanel>
-				<ImagePanel className={"lg:w-[340px] mx-4 lg:mx-0"}></ImagePanel>
+				
+				
+				<ImagePanel
+					src={"/projects/portfolio_1.jpg"}
+					className={"lg:w-[340px] mx-4 lg:mx-0"}
+					clickable
+					// desc={"NUchan е козметичен ъпдейт на 4chan.org с добавени функции"}
+					desc={
+						[
+							"This SPA static website made with React!",
+							"Този SPA статичен уебсайт направен с React!",
+						][lang]
+					}
+					windowData={{
+						heading: "Portfolio",
+						description: [
+							"NUchan is a graphical redesign of 4chan.org that adds a  lot of exciting new features. This is a passion project of mine since I like the unfiltered weird community of 4chan but I hate the early 2000s UI. So when I started learning web-development there was no better first project to choose than remaking 4chan. The front end is built with HTML, JavaScript, tailwind and some DaisyUI components. It uses a templating engine EJS, where I made pseudo-components like the sideNav, topNav, post, postReply etc. I used express for the back-end and   currently the site gets populated by 4chan’s API and it is  read-only. In the future I will be implementing personal profiles, board archives, the ability to add new posts as well as copying those posts over to 4chan.",
+							"Този сайт е Single-Page-Application направен с React, React Router, Redux, Tailwind и Motion. Първият ми проект е с тези технологии, затова изглежда малко аматьорски, но показва упоритостта и уменията ми като Front end и UI/UX дизайнер. Гордея се с него и ще добавям повече проекти илюстриращи колко полезен мога да бъда за вашия екип. Ако ви харесва и желаете обработка на ваш собствен сайт, свържете се с мен по-долу, ще се радвам да работим заедно!",
+						],
+						button: "dido-nikolov.web.app",
+						link:"https://dido-nikolov.web.app/",
+						github: "https://github.com/DaxXt3R/Portfolio_React",
+						images: [
+							"/projects/portfolio_1.jpg",
+							"/projects/portfolio_2.jpg",
+							"/projects/portfolio_3.jpg",
+							"/projects/portfolio_4.jpg",
+
+						],
+					}}></ImagePanel>
 
 				<div className="flex-col flex lg:w-[470px]">
 					<h2 className="theme-h2 hidden lg:block">
